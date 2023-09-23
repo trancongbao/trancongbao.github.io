@@ -1,5 +1,5 @@
-Here you can say lots of fun things about your site.
+[Managing Software Complexity is Hard](./Manage_Software_Complexity_Is_Hard.md)
 
-Maybe say a some things about yourself.
+[OOP Is Bad Actually](./OOP_Is_Bad_Actually/OOP_Is_Bad_Actually.md)
 
-Or maybe what you plan to blog about.
+[How to Approach Software Design and Refactoring](./How_To_Approach_Software_Design_Refactoring.md)
