@@ -28,26 +28,22 @@ The benefits expected of modular programming are:
 ## Criteria
 ### Coupling 
 A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
-+ Content coupling (high): Content coupling is said to occur when one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
-+ Common coupling: Common coupling is said to occur when several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side-effects when changes are made.
-External coupling
++ Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
++ Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side-effects when changes are made.
++ External coupling
 External coupling occurs when two modules share an externally imposed data format, communication protocol, or device interface. This is basically related to the communication to external tools and devices.
-Control coupling
-Control coupling is one module controlling the flow of another, by passing it information on what to do (e.g., passing a what-to-do flag).
-Stamp coupling (data-structured coupling)
-Stamp coupling occurs when modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it).
++ Control coupling: one module controlling the flow of another, by passing it information on what to do (e.g., passing a what-to-do flag).
++ Data-structured coupling: stamp coupling occurs when modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it).
 In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record.
-Data coupling
-Data coupling occurs when modules share data through, for example, parameters. Each datum is an elementary piece, and these are the only data shared (e.g., passing an integer to a function that computes a square root).
-Object-oriented programming
-Subclass coupling
-Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
-Temporal coupling
-It is when two actions are bundled together into one module just because they happen to occur at the same time.
++ Data coupling: modules share data through, for example, parameters. Each datum is an elementary piece, and these are the only data shared (e.g., passing an integer to a function that computes a square root).
+#### Object-oriented programming
++ Subclass coupling: Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
++ Temporal coupling: It is when two actions are bundled together into one module just because they happen to occur at the same time.
 In recent work various other coupling concepts have been investigated and used as indicators for different modularization principles used in practice.
 
-Versioning coupling
-Build & Deployment coupling
+#### Versioning coupling
+#### Build & Deployment coupling
+
 ### Cohesion
 ### Intuitiveness
 
