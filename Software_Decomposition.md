@@ -40,9 +40,20 @@ In this situation, a modification in a field that a module does not need may lea
 + Subclass coupling: Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
 + Temporal coupling: It is when two actions are bundled together into one module just because they happen to occur at the same time.
 In recent work various other coupling concepts have been investigated and used as indicators for different modularization principles used in practice.
-
-#### Versioning coupling
-#### Build & Deployment coupling
+#### Monolithic coupling
+##### Versioning coupling
+One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+##### IDE coupling
+Big code base can slow down the IDE, making developers less productive.
+##### Build coupling
+##### Startup coupling
+Edit-build-run-test loop takes a long time, which badly impact productivity.
+##### Resource coupling
+A bug in one module—for example, a memory leak—crashes all instances of the application, one by one.
+Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
+##### Technology stack coupling
+The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
+##### Database schema coupling
 
 ### Cohesion
 ### Intuitiveness
@@ -51,6 +62,6 @@ In recent work various other coupling concepts have been investigated and used a
 [Decomposition (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Decomposition_(computer_science))  
 [Modular programming - Wikipedia](https://en.wikipedia.org/wiki/Modular_programming)  
 [Coupling (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Coupling_(computer_programming))  
-[Cohension (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Cohesion_(computer_science))  
+[Cohesion (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Cohesion_(computer_science))  
 [Information hiding - Wikipedia](https://en.wikipedia.org/wiki/Information_hiding)  
 [Expression_problem - Wikipedia](https://en.wikipedia.org/wiki/Expression_problem)
