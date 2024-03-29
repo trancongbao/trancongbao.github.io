@@ -1,8 +1,10 @@
-# Software Decomposition (Modular Programming)
-
+# Software Decomposition 
 > A well-defined segmentation of the project effort ensures system modularity. Each task forms a separate, distinct program module. At implementation time each module and its inputs and outputs are well-defined, there is no confusion in the intended interface with other system modules. At checkout time the integrity of the module is tested independently; there are few scheduling problems in synchronizing the completion of several tasks before checkout can begin. Finally, the system is maintained in modular fashion; system errors and deficiencies can be traced to specific system modules, thus limiting the scope of detailed error searching.
+# Related Terms
++ Modular Programming
++ Divide and Conquer
 
-## What is Software Decompistion
+## What is software decomposition
 > Decomposition in computer science, also known as factoring, is breaking a complex problem or system into parts that are easier to conceive, understand, program, and maintain. (Wikipedia)
 
 > Structured analysis breaks down a software system from the system context level to system functions and data entities as described by Tom DeMarco. (Wikipedia)
@@ -11,11 +13,266 @@
 
 Expanded definition: data structure, procedures, blocks.
 
-## What is Modular Programming
+### Into blocks:
+```C
+// C Blocks
+// Static variables representing account balances
+static double balance1 = 200.0;
+static double balance2 = 300.0;
+
+void bankSimulation(double withdrawalAmount, double depositAmount) {
+    // Withdrawal operation from balance1
+    {
+        if (balance1 >= withdrawalAmount) {
+            balance1 -= withdrawalAmount;
+            printf("Withdrawn $%.2f from Account 1\n", withdrawalAmount);
+        } else {
+            printf("Insufficient funds for withdrawal from Account 1.\n");
+        }
+    }
+
+    // Deposit operation into balance2
+    {
+        balance2 += depositAmount;
+        printf("Deposited $%.2f into Account 2\n", depositAmount);
+    }
+}
+```
+```kotlin
+// Kotlin Scope Functions
+val hexNumberRegex = run {
+    val digits = "0-9"
+    val hexDigits = "A-Fa-f"
+    val sign = "+-"
+
+    Regex("[$sign]?[$digits$hexDigits]+")
+}
+
+for (match in hexNumberRegex.findAll("+123 -FFFF !%*& 88 XYZ")) {
+    println(match.value)
+}
+```
+
+### Into functions
+```C
+#include <stdio.h>
+
+// Function to calculate sum of an array of numbers
+int calculateSum(int numbers[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += numbers[i];
+    }
+    return sum;
+}
+
+// Function to calculate average of an array of numbers
+double calculateAverage(int sum, int n) {
+    return (double)sum / n;
+}
+
+// Function to find maximum of an array of numbers
+int findMax(int numbers[], int n) {
+    int max = numbers[0];
+    for (int i = 1; i < n; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i];
+        }
+    }
+    return max;
+}
+
+// Function to find minimum of an array of numbers
+int findMin(int numbers[], int n) {
+    int min = numbers[0];
+    for (int i = 1; i < n; i++) {
+        if (numbers[i] < min) {
+            min = numbers[i];
+        }
+    }
+    return min;
+}
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int numbers[n];
+    printf("Enter %d numbers:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &numbers[i]);
+    }
+
+    // Calculate sum
+    int sum = calculateSum(numbers, n);
+
+    // Calculate average
+    double average = calculateAverage(sum, n);
+
+    // Find maximum
+    int max = findMax(numbers, n);
+
+    // Find minimum
+    int min = findMin(numbers, n);
+
+    // Display results
+    printf("Sum: %d\n", sum);
+    printf("Average: %.2lf\n", average);
+    printf("Maximum: %d\n", max);
+    printf("Minimum: %d\n", min);
+
+    return 0;
+}
+```
+### Into data structures: array, map, struct, composite
+```C
+// C array
+const int CITY = 5;
+const int WEEK = 7;
+int temperature[CITY][WEEK];
+```
+```kotlin
+// Kotlin map (associative array)
+val scores = mapOf(
+    "Alice" to 95,
+    "Bob" to 87,
+    "Charlie" to 91
+)
+```
+```java
+// Java Stack
+Stack<Integer> stack = new Stack<>();
+// Java Queue
+Queue<Integer> queue = new LinkedList<>();
+```
+```C
+// C struct
+struct Student {
+    char name[50];
+    int age;
+    char grade;
+};
+```
+```kotlin
+// Kotlin array of maps
+val arrayOfMaps: Array<Map<String, Any>> = arrayOf(
+    mapOf("name" to "Alice", "age" to 25, "grade" to 'A'),
+    mapOf("name" to "Bob", "age" to 30, "grade" to 'B'),
+    mapOf("name" to "Charlie", "age" to 28, "grade" to 'C')
+)
+```
+```kotlin
+// Kotlin maps of arrays
+val map: Map<Array<Int>, Array<String>> = mapOf(
+    arrayOf(1, 2, 3) to arrayOf("apple", "banana", "orange"),
+    arrayOf(4, 5) to arrayOf("grape", "kiwi")
+)
+```
+```kotlin
+// Kotlin more complex data structure
+data class Student(val name: String, val age: Int)
+val students = arrayOf(
+    mapOf(
+        Student("Alice", 20) to mapOf("Math" to 85, "Physics" to 90)
+    ),
+    mapOf(
+        Student("Bob", 22) to mapOf("History" to 75, "English" to 80)
+    ),
+    mapOf(
+        Student("Charlie", 21) to mapOf("Biology" to 95, "Chemistry" to 88)
+    )
+)
+```
+### Into modules
+![Decomposition - Modules - C.jpg](Decomposition%20-%20Modules%20-%20C.jpg)
+### (OOP) Into Class
+```java
+// Java class
+public class Student {
+    private String name;
+    private int age;
+    private char grade;
+
+    // Constructor
+    public Student(String name, int age, char grade) {
+        this.name = name;
+        this.age = age;
+        this.grade = grade;
+    }
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getGrade() {
+        return grade;
+    }
+
+    public void setGrade(char grade) {
+        this.grade = grade;
+    }
+
+    // Method to check if student is eligible for promotion
+    public boolean isEligibleForPromotion() {
+        return grade >= 'C'; // Assuming grade 'C' or above is eligible
+    }
+
+    // Method to print a message based on the student's grade
+    public void printGradeMessage() {
+        switch (grade) {
+            case 'A':
+                System.out.println("Excellent performance!");
+                break;
+            case 'B':
+                System.out.println("Good performance!");
+                break;
+            case 'C':
+                System.out.println("Satisfactory performance.");
+                break;
+            default:
+                System.out.println("Needs improvement.");
+                break;
+        }
+    }
+
+    // Override toString() method
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", grade=" + grade +
+                '}';
+    }
+}
+```
+
+### 
+
+## What is modular programming
 > Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.  
 A module interface expresses the elements that are provided and required by the module. The elements defined in the interface are detectable by other modules. The implementation contains the working code that corresponds to the elements declared in the interface. Modular programming is closely related to structured programming and object-oriented programming, all having the same goal of facilitating construction of large software programs and systems by decomposition into smaller pieces, and all originating around the 1960s. While the historical usage of these terms has been inconsistent, "modular programming" now refers to the high-level decomposition of the code of an entire program into pieces: structured programming to the low-level code use of structured control flow, and object-oriented programming to the data use of objects. (Wikipedia)
 
-## Expected Benefits of Modular Programming
+## Why do we decompose software?
+![img.png](img.png)
+Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Doing so allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together. Decomposition is the design equivalent of distributed computation in many ways.
+
+By dividing a complex problem into smaller parts, you can reduce the cognitive load, focus on one aspect at a time, and avoid getting lost in irrelevant details or assumptions. Breaking down complex problems also helps you to communicate more effectively with others, as you can explain your problem and your solution in a clear and logical way, and invite feedback and collaboration.
+
 The benefits expected of modular programming are:
 + comprehensibility: it should be possible to study the system one module at a time. The whole system can therefore be better designed because it is better understood.
 + product flexibility: it should be possible to make drastic changes to one module without a need to change others
@@ -25,6 +282,8 @@ The benefits expected of modular programming are:
 + Prevent use by mistake (not common)
 + Better automatic generation of interfaces documentation 
 + Better IDE suggestions
+
+### What is 
 ## Criteria
 ### Coupling 
 A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
