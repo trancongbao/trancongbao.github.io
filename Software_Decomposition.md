@@ -1,19 +1,15 @@
 # Software Decomposition 
 > A well-defined segmentation of the project effort ensures system modularity. Each task forms a separate, distinct program module. At implementation time each module and its inputs and outputs are well-defined, there is no confusion in the intended interface with other system modules. At checkout time the integrity of the module is tested independently; there are few scheduling problems in synchronizing the completion of several tasks before checkout can begin. Finally, the system is maintained in modular fashion; system errors and deficiencies can be traced to specific system modules, thus limiting the scope of detailed error searching.
-# Related Terms
-+ Modular Programming
-+ Divide and Conquer
 
 ## What is software decomposition
 > Decomposition in computer science, also known as factoring, is breaking a complex problem or system into parts that are easier to conceive, understand, program, and maintain. (Wikipedia)
 
 > Structured analysis breaks down a software system from the system context level to system functions and data entities as described by Tom DeMarco. (Wikipedia)
 
-> Object-oriented decomposition, on the other hand, breaks a large system down into progressively smaller classes or objects that are responsible for some part of the problem domain. (Wikipedia)  
+> Object-oriented decomposition, on the other hand, breaks a large system down into progressively smaller classes or objects that are responsible for some part of the problem domain. (Wikipedia)
 
-Expanded definition: data structure, procedures, blocks.
-
-### Into blocks:
+A program can be thought of as containing data (states) and logic.
+### Logic can be decomposed into blocks
 ```C
 // C Blocks
 // Static variables representing account balances
@@ -52,8 +48,23 @@ for (match in hexNumberRegex.findAll("+123 -FFFF !%*& 88 XYZ")) {
     println(match.value)
 }
 ```
-
-### Into functions
+```go
+// Golang Blocks
+v := "outer"
+fmt.Println(v)
+{
+    v := "inner"
+    fmt.Println(v)
+    {
+        fmt.Println(v)
+    }
+}
+{
+    fmt.Println(v)
+}
+fmt.Println(v)
+```
+### Logic can be decomposed into functions
 ```C
 #include <stdio.h>
 
@@ -64,11 +75,6 @@ int calculateSum(int numbers[], int n) {
         sum += numbers[i];
     }
     return sum;
-}
-
-// Function to calculate average of an array of numbers
-double calculateAverage(int sum, int n) {
-    return (double)sum / n;
 }
 
 // Function to find maximum of an array of numbers
@@ -107,9 +113,6 @@ int main() {
     // Calculate sum
     int sum = calculateSum(numbers, n);
 
-    // Calculate average
-    double average = calculateAverage(sum, n);
-
     // Find maximum
     int max = findMax(numbers, n);
 
@@ -125,7 +128,7 @@ int main() {
     return 0;
 }
 ```
-### Into data structures: array, map, struct, composite
+### Data can be decomposed into data structures: array, map, struct, table, composite
 ```C
 // C array
 const int CITY = 5;
@@ -184,9 +187,40 @@ val students = arrayOf(
     )
 )
 ```
-### Into modules
-![Decomposition - Modules - C.jpg](Decomposition%20-%20Modules%20-%20C.jpg)
-### (OOP) Into Class
+```
+import ballerina/io;
+
+type Employee record {|
+    readonly int id;
+    string firstName;
+    string lastName;
+    int salary;
+|};
+
+public function main() {
+    table<Employee> key(id) employees = table [
+            {id: 1, firstName: "John", lastName: "Smith", salary: 100},
+            {id: 2, firstName: "Jane", lastName: "Smith", salary: 150},
+            {id: 4, firstName: "Fred", lastName: "Bloggs", salary: 200},
+            {id: 7, firstName: "Bobby", lastName: "Clark", salary: 300},
+            {id: 9, firstName: "Cassie", lastName: "Smith", salary: 250}
+        ];
+
+    int[] salaries = from var emp in employees
+                     select emp.salary;
+    io:println(salaries);
+
+    table<Employee> highPaidEmployees = from Employee emp in employees
+                             where emp.salary > 180
+                             order by emp.firstName
+                             select emp;
+
+    foreach Employee emp in highPaidEmployees {
+        io:println(emp.firstName, " ", emp.lastName);
+    }
+}
+```
+### Data and logic can be decomposed into object (OOP)
 ```java
 // Java class
 public class Student {
@@ -260,31 +294,55 @@ public class Student {
     }
 }
 ```
+### Data and logic can be decomposed into packages
+![Decomposition - Packages - C.jpg](Software_Decomposition/Decomposition%20-%20Packages%20-%20C.jpg)
+![Decomposition - Packages - JS.jpg](Software_Decomposition%2FDecomposition%20-%20Packages%20-%20JS.jpg)
+### Packages can be decomposed into modules
+![Decomposition - Modules - Go.png](Software_Decomposition/Decomposition%20-%20Modules%20-%20Go.png)
 
-### 
+### Other (non-code) types of separation
+![Decomposition - Architecture.png](Software_Decomposition%2FDecomposition%20-%20Architecture.png)
+#### An application can be seperated into multiple processes
+![Decomposition - IPC.png](Software_Decomposition%2FDecomposition%20-%20IPC.png)
+#### An application's processes can be separated into multiple distributed services
+![Decomposition - Virtualization.png](<Software_Decomposition/Decomposition - Virtualization.png>)
+![Decomposition - Containers](<Software_Decomposition/Decomposition - Containers.png>)
+#### An application's distributed services can be separated into different machines
 
-## What is modular programming
-> Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.  
-A module interface expresses the elements that are provided and required by the module. The elements defined in the interface are detectable by other modules. The implementation contains the working code that corresponds to the elements declared in the interface. Modular programming is closely related to structured programming and object-oriented programming, all having the same goal of facilitating construction of large software programs and systems by decomposition into smaller pieces, and all originating around the 1960s. While the historical usage of these terms has been inconsistent, "modular programming" now refers to the high-level decomposition of the code of an entire program into pieces: structured programming to the low-level code use of structured control flow, and object-oriented programming to the data use of objects. (Wikipedia)
-
-## Why do we decompose software?
-![img.png](img.png)
-Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Doing so allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together. Decomposition is the design equivalent of distributed computation in many ways.
+## What are the potential benefits of decomposition?
+![Decomposition-Car.png](Software_Decomposition/Decomposition%20-%20Car.png)
+Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together. Decomposition is the design equivalent of distributed computation in many ways.
 
 By dividing a complex problem into smaller parts, you can reduce the cognitive load, focus on one aspect at a time, and avoid getting lost in irrelevant details or assumptions. Breaking down complex problems also helps you to communicate more effectively with others, as you can explain your problem and your solution in a clear and logical way, and invite feedback and collaboration.
 
-The benefits expected of modular programming are:
-+ comprehensibility: it should be possible to study the system one module at a time. The whole system can therefore be better designed because it is better understood.
-+ product flexibility: it should be possible to make drastic changes to one module without a need to change others
-+ managerial: development time should be shortened because separate groups would work on each module with little need for communication
+### Comprehensibility
+It should be possible to study the system one module at a time. The whole system can therefore be better designed because it is better understood.
+### Easier Changes
+It should be possible to make drastic changes to one module without a need to change others: faster and less risky.
+### Coordination/Communication
+Separate groups would work on each module with little need for communication.
+### Reusability
+A function can be re-used at many places.
+### Test isolation
+### Multi-repo benefits
+#### Versioning decoupling
+One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+### Multi-process benefits
+Parallelism -- it allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
+Another advantage of separate processes is that they can provide a security barrier. If a program needs to do some work with different permissions (e.g., as root, or even just as a different user), it can spawn a new process running as that other user to do just that bit of work. That way, it's much, much harder for a bug in one part of the code to affect the part running with different permissions. Apache is usually configured to work this way, for example. Only root can bind to low-number ports (like port 80 which is usually used by web servers), so you have to start it as root, and it binds to the port. But it doesn't need root permissions to process each web request, so it spawns a new process with lower permissions to do that work. This provides a huge security benefit since if there's a bug in a script that processes the request that allows an attacker to run arbitrary commands, it's at least running with very little privileges so it can't access critical system files (at least not without exploiting a second bug to escalate its privileges).
 
-### Information Hiding
-+ Prevent use by mistake (not common)
-+ Better automatic generation of interfaces documentation 
-+ Better IDE suggestions
+A final difference is that using separate processes is the first step toward allowing you to offload the work onto a completely separate computer (client/server style). So if you're using a program flexible enough that it allows you to spread its work across several computers in a network, it'll probably use processes instead of threads.
+### Distributed system benefits
+Part of the application can resides in different machines, different rooms, different buildings, different parts of the world. 
 
-### What is 
-## Criteria
+
+## What are the potential costs of decomposition
+Indirection
+Abstraction
+Coupling
+
+## Criteria for good decomposition
+Good decomposition means the net benefit is positive (oppurtunity cost).
 ### Coupling 
 A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
 + Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
@@ -317,10 +375,26 @@ The monolithic architecture makes it difficult to adopt new frameworks and langu
 ### Cohesion
 ### Intuitiveness
 
+## Related terms
++ Divide and Conquer
++ Separation of Concerns
++ Modular Programming
++ Grannularity
+
+### Modular programming
+> A modularized application may or may not be modular.
+
+> **Modular programming** is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable **modules**, such that each contains everything necessary to execute only one aspect of the desired functionality.  
+A module **interface** expresses the elements that are provided and required by the module. The elements defined in the interface are detectable by other modules. The **implementation** contains the working code that corresponds to the elements declared in the interface. (Wikipedia)
+### Information hiding
++ Prevent use by mistake (not common)
++ Better automatic generation of interfaces documentation 
++ Better IDE suggestions
 ## Reference
 [Decomposition (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Decomposition_(computer_science))  
 [Modular programming - Wikipedia](https://en.wikipedia.org/wiki/Modular_programming)  
 [Coupling (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Coupling_(computer_programming))  
 [Cohesion (computer science) - Wikipedia](https://en.wikipedia.org/wiki/Cohesion_(computer_science))  
 [Information hiding - Wikipedia](https://en.wikipedia.org/wiki/Information_hiding)  
-[Expression_problem - Wikipedia](https://en.wikipedia.org/wiki/Expression_problem)
+[Expression_problem - Wikipedia](https://en.wikipedia.org/wiki/Expression_problem)  
+[How to organize your code (Blog)](https://kislayverma.com/programming/how-to-organize-your-code)
