@@ -332,11 +332,11 @@ public class Student {
 
 #### An application can be seperated into multiple processes
 
-<img src="Software_Decomposition/Decomposition - IPC.png" width="400">
+<img src="Software_Decomposition/Decomposition - IPC.png" width="600">
 
 #### An application's processes can be separated into multiple distributed services
 
-<img src="Software_Decomposition/Decomposition - Virtualization.png" width="600">
+<img src="Software_Decomposition/Decomposition - Virtualization.webp" width="600">
 <img src="Software_Decomposition/Decomposition - Containers.png" width="600">
 
 #### An application's distributed services can be separated into different machines
@@ -348,11 +348,8 @@ public class Student {
 
 <img src="Software_Decomposition/Decomposition - Databases.png" width="600">
 
-#### Code can be seprated into multiple IDE projects
-
-Big code base can slow down the IDE, making developers less productive.
-
 #### Code can be separated into multiple repositories
+Processes in multi-process architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with  multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
 
 ## What are the potential benefits of decomposition?
 
@@ -380,36 +377,95 @@ A function can be re-used at many places.
 
 ### Test isolation
 
-### Multi-repo benefits
-One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+### Benefits of multi-repo
 
 #### Versioning decoupling
 
 One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
 
-### Multi-process benefits
+#### Independent library versioning
 
-Parallelism -- it allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
+When tagging a repository, its whole codebase is assigned the “new” tag. Since only the code for a specific library is on the repository, the library can be tagged and versioned independently of all other libraries hosted elsewhere.
+Having an independent version for every library helps define the dependency tree for the application, allowing us to configure what version of each library to use.
+
+#### Independent service releases
+
+Since the repository only contains the code for some service and nothing else, it can have its own deployment cycle, independently of any progress made on the applications accessing it.
+
+The service can use a fast release cycle such as continuous delivery (where new code is deployed after it passes all the tests). Some libraries accessing the service may use a slower release cycle, such as those that only produce a new release once a week.
+
+#### Helps define access control across the organization
+
+Only the team members involved with developing a library need to be added to the corresponding repository and download its code. As a result, there’s an implicit access control strategy for each layer in the application. Those involved with the library will be granted editing rights, and everyone else may get no access to the repository. Or they may be given reading but not editing rights.
+
+#### Allows teams to work autonomously
+
+Team members can design the library’s architecture and implement its code working in isolation from all other teams. They can make decisions based on what the library does in the general context without being affected by the specific requirements from some external team or application.
+
+#### Less load on IDE when only one repo needs to be worked on
+
+Less load on IDE when only one repo needs to be worked on.
+
+### Benefits of multi-process (multi)
+
+#### Parallelism
+Multi-process archiecture allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
+
 Another advantage of separate processes is that they can provide a security barrier. If a program needs to do some work with different permissions (e.g., as root, or even just as a different user), it can spawn a new process running as that other user to do just that bit of work. That way, it's much, much harder for a bug in one part of the code to affect the part running with different permissions. Apache is usually configured to work this way, for example. Only root can bind to low-number ports (like port 80 which is usually used by web servers), so you have to start it as root, and it binds to the port. But it doesn't need root permissions to process each web request, so it spawns a new process with lower permissions to do that work. This provides a huge security benefit since if there's a bug in a script that processes the request that allows an attacker to run arbitrary commands, it's at least running with very little privileges so it can't access critical system files (at least not without exploiting a second bug to escalate its privileges).
 
 A final difference is that using separate processes is the first step toward allowing you to offload the work onto a completely separate computer (client/server style). So if you're using a program flexible enough that it allows you to spread its work across several computers in a network, it'll probably use processes instead of threads.
 
-### Distributed system benefits
+### Faster build and startup
+Edit-build-run-test loop takes less time, which improves productivity.
+
+### Benefits of decomposing into distributed services
 
 Part of the application can resides in different machines, different rooms, different buildings, different parts of the world.
 
 ## What are the potential costs of decomposition
+
 <img src="Software_Decomposition/Decomposition - Coupling.png" width="600">
 
-Indirection
-Abstraction
-Coupling
+### Indirection
+
+### Abstraction
+
+### Coupling
+
+### Costs of Multi-Repo
+
+#### Higher barriers of entry
+
+When new staff members start working for a company, they need to download the code and install the required tools to begin working on their tasks. Suppose the project is scattered across many repositories, each having its installation instructions and tooling required. In that case, the initial setup will be complex, and more often than not, the documentation will not be complete, requiring these new team members to reach out to colleagues for help.
+
+A monorepo simplifies matters. Since there is a single location containing all code and documentation, you can streamline the initial setup.
+
+#### Painful application-wide refactorings
+
+When creating an application-wide refactoring of the code, multiple libraries will be affected. If you’re hosting them via multiple repositories, managing all the different pull requests to keep them synchronized with each other can prove to be a challenge.
+
+A monorepo makes it easy to perform all modifications to all code for all libraries and submit it under a single pull request.
+
+#### Libraries must constantly be resynced
+
+When a new version of a library containing breaking changes is released, libraries depending on this library will need to be adapted to start using the latest version. If the release cycle of the library is faster than that of its dependent libraries, they could quickly become out of sync with each other.
+
+Teams will need to constantly catch up to use the latest releases from other teams. Given that different teams have different priorities, this may sometimes prove arduous to achieve.
+
+Consequently, a team not able to catch up may end up sticking to the outdated version of the depended-upon library. This outcome will have implications on the application (in terms of security, speed, and other considerations), and the gap in development across libraries may only get wider.
+
+#### May fragment teams
+
+When different teams don’t need to interact, they may work in their own silos. In the long term, this could result in teams producing their subcultures within the company, such as employing different methodologies of programming or management or utilizing different sets of development tools.
+
+If some team member eventually needs to work in a different team, they may suffer a bit of culture shock and learn a new way of doing their job.
 
 ## Criteria for good decomposition
 
 Good decomposition means the net benefit is positive (oppurtunity cost).
 
 ### Coupling
+
 <img src="Software_Decomposition/Decomposition - Coupling & Cohesion.png" width="600">
 A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
 
@@ -500,4 +556,5 @@ Decompose by business capability is a decomposition technique that involves brea
 [Information hiding - Wikipedia](https://en.wikipedia.org/wiki/Information_hiding)  
 [Expression_problem - Wikipedia](https://en.wikipedia.org/wiki/Expression_problem)  
 [How to organize your code (Blog)](https://kislayverma.com/programming/how-to-organize-your-code)  
-[Decomposition in Software Testing](https://trailheadtechnology.com/decomposition-in-software-testing/)
+[Decomposition in Software Testing](https://trailheadtechnology.com/decomposition-in-software-testing/)  
+[Monorepo vs Multi-Repo](https://kinsta.com/blog/monorepo-vs-multi-repo/)
