@@ -10,9 +10,41 @@
 
 > Object-oriented decomposition, on the other hand, breaks a large system down into progressively smaller classes or objects that are responsible for some part of the problem domain. (Wikipedia)
 
-A program can be thought of as containing data (states) and logic.
+### Architecture & the 4+1 architecture view model
 
-### Logic can be decomposed into blocks
+There are numerous definitions of software architecture. For example, see https://en.wikiquote.org/wiki/Software_architecture to read some of them. My favorite definition comes from Len Bass and colleagues at the Software Engineering Institute (www.sei.cmu.edu), who played a key role in establishing software architecture as a discipline. They define software architecture as follows:
+
+> The software architecture of a computing system is the set of structures needed to reason about the system, which comprise software elements, relations among them, and properties of both. (Documenting Software Architectures by Bass et al.)
+
+That’s obviously a quite abstract definition. But its essence is that an application’s architecture is its **decomposition** into parts (the **elements**) and the relationships (the **relations**) between those parts.
+
+Decomposition is important for a couple of reasons:
+
+- It facilitates the division of labor and knowledge. It enables multiple people (or multiple teams) with possibly specialized knowledge to work productively together on an application.
+- It defines how the software elements interact.
+
+It’s the decomposition into parts and the relationships between those parts that determine the application’s -ilities.
+
+#### The 4+1 view model of software architecture
+
+More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
+The 4+1 model defines four different views of a software architecture. Each describes a particular aspect of the architecture and consists of a particular set of software elements and relationships between them.
+<img src="Software_Decomposition/Decomposition - Architecture.png" width="600">
+
+The purpose of each view is as follows:
+
+- **Logical view**— The software elements that are created by developers. In object-oriented languages, these elements are classes and packages. The relations between them are the relationships between classes and packages, including inheritance, associations, and depends-on.
+- **Implementation view**— The output of the build system. This view consists of modules, which represent packaged code, and components, which are executable or deployable units consisting of one or more modules. In Java, a module is a JAR file, and a component is typically a WAR file or an executable JAR file. The relations between them include dependency relationships between modules and composition relationships between components and modules.
+- **Process view**— The components at runtime. Each element is a process, and the relations between processes represent interprocess communication.
+- **Deployment view**— How the processes are mapped to machines. The elements in this view consist of (physical or virtual) machines and the processes. The relations between machines represent networking. This view also describes the relationship between processes and machines.
+
+In addition to these four views, there are the **scenarios**—the +1 in the 4+1 model—that animate views. Each scenario describes how the various architectural components within a particular view collaborate in order to handle a request. A scenario in the logical view, for example, shows how the classes collaborate. Similarly, a scenario in the process view shows how the processes collaborate.
+
+### Logical decomposition
+
+A program can be thought of, logically, as containing data (states) and logic.
+
+##### Logic can be decomposed into blocks
 
 ```C
 // C Blocks
@@ -71,7 +103,7 @@ fmt.Println(v)
 fmt.Println(v)
 ```
 
-### Logic can be decomposed into functions
+#### Logic can be decomposed into functions
 
 ```C
 #include <stdio.h>
@@ -137,7 +169,7 @@ int main() {
 }
 ```
 
-### Data can be decomposed into data structures: array, map, struct, table, composite
+#### Data can be decomposed into data structures: array, map, struct, table, composite
 
 ```C
 // C array
@@ -238,7 +270,7 @@ public function main() {
 }
 ```
 
-### Data and logic can be decomposed into object (OOP)
+#### Data and logic can be decomposed into object (OOP)
 
 ```java
 // Java class
@@ -314,7 +346,7 @@ public class Student {
 }
 ```
 
-### Data and logic can be decomposed into packages
+#### Data and logic can be decomposed into packages
 
 <img src="Software_Decomposition/Decomposition - Packages - C.jpg" width="600">
 
@@ -322,13 +354,19 @@ public class Student {
 
 <img src="Software_Decomposition/Decomposition - Packages - Java.png" width="400">
 
-### Packages can be decomposed into modules
+#### Packages can be decomposed into modules
 
 <img src="Software_Decomposition/Decomposition - Modules - Go.png" width="600">
 
-### Other (non-code) types of separation
+#### Persistent data can be divided into sql tables/no-sql documents
 
-<img src="Software_Decomposition/Decomposition - Architecture.png" width="600">
+<img src="Software_Decomposition/Decomposition - Databases.webp" width="600">
+
+#### Sql tables/no-sql documents can be separated into different databases
+
+<img src="Software_Decomposition/Decomposition - Databases.png" width="600">
+
+### Implementation/process/deployment decomposition
 
 #### An application can be seperated into multiple processes
 
@@ -344,12 +382,10 @@ public class Student {
 <img src="Software_Decomposition/Decomposition - Distributed System.png" width="600">
 <img src="Software_Decomposition/Decomposition - Client-Server.webp" width="600">
 
-#### Peristent data can be separated into different databases
-
-<img src="Software_Decomposition/Decomposition - Databases.png" width="600">
-
+### Other types of separation
 #### Code can be separated into multiple repositories
-Processes in multi-process architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with  multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
+
+Processes in multi-process architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
 
 ## What are the potential benefits of decomposition?
 
@@ -409,6 +445,7 @@ Less load on IDE when only one repo needs to be worked on.
 ### Benefits of multi-process (multi)
 
 #### Parallelism
+
 Multi-process archiecture allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
 
 Another advantage of separate processes is that they can provide a security barrier. If a program needs to do some work with different permissions (e.g., as root, or even just as a different user), it can spawn a new process running as that other user to do just that bit of work. That way, it's much, much harder for a bug in one part of the code to affect the part running with different permissions. Apache is usually configured to work this way, for example. Only root can bind to low-number ports (like port 80 which is usually used by web servers), so you have to start it as root, and it binds to the port. But it doesn't need root permissions to process each web request, so it spawns a new process with lower permissions to do that work. This provides a huge security benefit since if there's a bug in a script that processes the request that allows an attacker to run arbitrary commands, it's at least running with very little privileges so it can't access critical system files (at least not without exploiting a second bug to escalate its privileges).
@@ -416,6 +453,7 @@ Another advantage of separate processes is that they can provide a security barr
 A final difference is that using separate processes is the first step toward allowing you to offload the work onto a completely separate computer (client/server style). So if you're using a program flexible enough that it allows you to spread its work across several computers in a network, it'll probably use processes instead of threads.
 
 ### Faster build and startup
+
 Edit-build-run-test loop takes less time, which improves productivity.
 
 ### Benefits of decomposing into distributed services
@@ -523,7 +561,7 @@ Functional decomposition is a software design technique in which a complex syste
 
 Functional decomposition is commonly used in object-oriented programming and structured programming paradigms. In object-oriented programming, each module is implemented as a class that encapsulates a specific set of functionality. In structured programming, each module is implemented as a function or procedure that performs a specific task.
 
-### Business capability Decomposition
+### Business capability decomposition
 
 Decompose by business capability is a decomposition technique that involves breaking down a software system based on the business capabilities or functions it provides. In other words, the system is divided into smaller components based on the specific business capabilities they support, such as sales, customer service, inventory management, or accounting.
 
