@@ -549,12 +549,7 @@ Part of the application can reside in different machines, different rooms, diffe
 ### Coupling
 
 The different parts of an application cannot work alone. They still need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**.
-Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design is.
-
-#### Distance between parts
-
-Logic: same block -> same function -> same package ->
-Data: same struct/table --> different struct/table
+Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
 
 ### Indirection
 
@@ -597,7 +592,6 @@ Good decomposition means the net benefit is positive (opportunity cost).
 ### Coupling
 
 <img src="Software_Decomposition/Decomposition - Coupling & Cohesion.png" width="600">
-A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
 
 - Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
 - Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side effects when changes are made.
@@ -642,6 +636,11 @@ The monolithic architecture makes it difficult to adopt new frameworks and langu
 ##### Database schema coupling
 
 ### Cohesion
+#### Distance between parts
+
+Logic: block -> function -> class -> package -> service
+Data: piece of primitive data -> struct/table/class -> package -> service
+Peristent data storage: row -> table -> database -> database server
 
 ### Intuitiveness
 
