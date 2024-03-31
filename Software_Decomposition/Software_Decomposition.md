@@ -356,23 +356,23 @@ public class Student {
 
 #### Data and logic can be decomposed into packages
 
-<img src="Software_Decomposition/Decomposition - Packages - C.jpg" width="600">
+<img src="Decomposition%20-%20Packages%20-%20C.jpg" width="600">
 
-<img src="Software_Decomposition/Decomposition - Packages - JS.jpg" width="600">
+<img src="Decomposition%20-%20Packages%20-%20JS.jpg" width="600">
 
-<img src="Software_Decomposition/Decomposition - Packages - Java.png" width="400">
+<img src="Decomposition%20-%20Packages%20-%20Java.png" width="400">
 
 #### Packages can be decomposed into modules
 
-<img src="Software_Decomposition/Decomposition - Modules - Go.png" width="600">
+<img src="Decomposition%20-%20Modules%20-%20Go.png" width="600">
 
 #### Persistent data can be divided into sql tables/no-sql documents
 
-<img src="Software_Decomposition/Decomposition - Databases.webp" width="600">
+<img src="Decomposition%20-%20Databases.webp" width="600">
 
 #### Sql tables/no-sql documents can be separated into different databases
 
-<img src="Software_Decomposition/Decomposition - Databases.png" width="600">
+<img src="Decomposition%20-%20Databases.png" width="600">
 
 #### Differences between decomposing data+logic into C modules vs. Java objects
 
@@ -453,17 +453,17 @@ int main() {
 
 #### An application can be seperated into multiple processes
 
-<img src="Software_Decomposition/Decomposition - IPC.png" width="600">
+<img src="Decomposition%20-%20IPC.png" width="600">
 
 #### An application's processes can be separated into multiple distributed services
 
-<img src="Software_Decomposition/Decomposition - Virtualization.webp" width="600">
-<img src="Software_Decomposition/Decomposition - Containers.png" width="600">
+<img src="Decomposition%20-%20Virtualization.webp" width="600">
+<img src="Decomposition%20-%20Containers.png" width="600">
 
 #### An application's distributed services can be separated into different machines
 
-<img src="Software_Decomposition/Decomposition - Distributed System.png" width="600">
-<img src="Software_Decomposition/Decomposition - Client-Server.webp" width="600">
+<img src="Decomposition%20-%20Distributed%20System.png" width="600">
+<img src="Decomposition%20-%20Client-Server.webp" width="600">
 
 ### Other types of separation
 
@@ -473,7 +473,7 @@ Processes in multiprocess architecture tend to be distributed services. And dist
 
 ## What are the potential benefits of decomposition?
 
-<img src="Software_Decomposition/Decomposition - Car.png" width="600">
+<img src="Decomposition%20-%20Car.png" width="600">
 
 Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together.
 
@@ -544,7 +544,7 @@ Part of the application can reside in different machines, different rooms, diffe
 
 ## What are the potential costs of decomposition
 
-<img src="Software_Decomposition/Decomposition - Coupling.png" width="600">
+<img src="Decomposition%20-%20Coupling.png" width="600">
 
 ### Coupling
 
@@ -591,7 +591,7 @@ Good decomposition means the net benefit is positive (opportunity cost).
 
 ### Coupling
 
-<img src="Software_Decomposition/Decomposition - Coupling & Cohesion.png" width="600">
+<img src="Decomposition%20-%20Coupling%20&%20Cohesion.png" width="600">
 
 - Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
 - Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side effects when changes are made.
