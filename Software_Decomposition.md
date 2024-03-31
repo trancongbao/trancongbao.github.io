@@ -461,7 +461,7 @@ int main() {
 
 #### Code can be separated into multiple repositories
 
-Processes in multi-process architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
+Processes in multiprocess architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
 
 ## What are the potential benefits of decomposition?
 
@@ -469,11 +469,9 @@ Processes in multi-process architecture tend to be distributed services. And dis
 
 Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together.
 
-By dividing a complex problem into smaller parts, you can reduce the cognitive load, focus on one aspect at a time, and avoid getting lost in irrelevant details or assumptions. Breaking down complex problems also helps you to communicate more effectively with others, as you can explain your problem and your solution in a clear and logical way, and invite feedback and collaboration.
-
 ### Comprehensibility
 
-It should be possible to study the system one module at a time. The whole system can therefore be better designed because it is better understood.
+By dividing a complex problem into smaller parts, you can reduce the cognitive load, focus on one aspect at a time, and avoid getting lost in irrelevant details or assumptions. Breaking down complex problems also helps you to communicate more effectively with others, as you can explain your problem and your solution in a clear and logical way, and invite feedback and collaboration.
 
 ### Easier Changes
 
@@ -522,9 +520,9 @@ Less load on IDE when only one repo needs to be worked on.
 
 #### Parallelism
 
-Multi-process archiecture allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
+Multiprocess architecture allows the application to do more than one thing at a time, if you have multicore/multi-CPU system. Even if you have only a single CPU/core, it allows the OS scheduler to ensure that everything that needs to do work gets its fair share of processing time.
 
-Another advantage of separate processes is that they can provide a security barrier. If a program needs to do some work with different permissions (e.g., as root, or even just as a different user), it can spawn a new process running as that other user to do just that bit of work. That way, it's much, much harder for a bug in one part of the code to affect the part running with different permissions. Apache is usually configured to work this way, for example. Only root can bind to low-number ports (like port 80 which is usually used by web servers), so you have to start it as root, and it binds to the port. But it doesn't need root permissions to process each web request, so it spawns a new process with lower permissions to do that work. This provides a huge security benefit since if there's a bug in a script that processes the request that allows an attacker to run arbitrary commands, it's at least running with very little privileges so it can't access critical system files (at least not without exploiting a second bug to escalate its privileges).
+Another advantage of separate processes is that they can provide a security barrier. If a program needs to do some work with different permissions (e.g., as root, or even just as a different user), it can spawn a new process running as that other user to do just that bit of work. That way, it's much, much harder for a bug in one part of the code to affect the part running with different permissions. Apache is usually configured to work this way, for example. Only root can bind to low-number ports (like port 80 which is usually used by web servers), so you have to start it as root, and it binds to the port. But it doesn't need root permissions to process each web request, so it spawns a new process with lower permissions to do that work. This provides a huge security benefit since if there's a bug in a script that processes the request that allows an attacker to run arbitrary commands, it's at least running with very little privileges, so it can't access critical system files (at least not without exploiting a second bug to escalate its privileges).
 
 A final difference is that using separate processes is the first step toward allowing you to offload the work onto a completely separate computer (client/server style). So if you're using a program flexible enough that it allows you to spread its work across several computers in a network, it'll probably use processes instead of threads.
 
@@ -534,11 +532,15 @@ Edit-build-run-test loop takes less time, which improves productivity.
 
 ### Benefits of decomposing into distributed services
 
-Part of the application can resides in different machines, different rooms, different buildings, different parts of the world.
+Part of the application can reside in different machines, different rooms, different buildings, different parts of the world.
 
 ## What are the potential costs of decomposition
 
 <img src="Software_Decomposition/Decomposition - Coupling.png" width="600">
+
+### Coupling
+The different parts of an application cannot work alone. They still need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**. And the degree of coupling in the system is one of the primary indicators of the quality of the design/decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
+Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And the degree of 
 
 ### Indirection
 
@@ -560,7 +562,7 @@ When creating an application-wide refactoring of the code, multiple libraries wi
 
 A monorepo makes it easy to perform all modifications to all code for all libraries and submit it under a single pull request.
 
-#### Libraries must constantly be resynced
+#### Libraries must constantly be re-synced
 
 When a new version of a library containing breaking changes is released, libraries depending on this library will need to be adapted to start using the latest version. If the release cycle of the library is faster than that of its dependent libraries, they could quickly become out of sync with each other.
 
@@ -576,7 +578,7 @@ If some team member eventually needs to work in a different team, they may suffe
 
 ## Criteria for good decomposition
 
-Good decomposition means the net benefit is positive (oppurtunity cost).
+Good decomposition means the net benefit is positive (opportunity cost).
 
 ### Coupling
 
@@ -584,7 +586,7 @@ Good decomposition means the net benefit is positive (oppurtunity cost).
 A module here refers to a subroutine of any kind, i.e. a set of one or more statements having a name and preferably its own set of variable names.
 
 - Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
-- Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side-effects when changes are made.
+- Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side effects when changes are made.
 - External coupling
   External coupling occurs when two modules share an externally imposed data format, communication protocol, or device interface. This is basically related to the communication to external tools and devices.
 - Control coupling: one module controlling the flow of another, by passing it information on what to do (e.g., passing a what-to-do flag).
@@ -646,7 +648,7 @@ Decompose by business capability is a decomposition technique that involves brea
 - Divide and Conquer
 - Separation of Concerns
 - Modular Programming
-- Grannularity
+- Granularity
 
 ### Modular programming
 
