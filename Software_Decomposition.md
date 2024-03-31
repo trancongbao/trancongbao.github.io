@@ -366,6 +366,81 @@ public class Student {
 
 <img src="Software_Decomposition/Decomposition - Databases.png" width="600">
 
+#### Differences between decomposing data+logic into C modules vs. Java objects
+
+Even though data+logic can be decomposed into different parts using either modules in C or objects in Java, there is a critical difference: relationship between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
+
+| Relationship | C   | Java |
+| ------------ | --- | ---- |
+| Dependency   | yes | yes  |
+| Association  | no  | yes  |
+| Aggregation  | no  | yes  |
+| Composition  | no  | yes  |
+| Inheritance  | no  | yes  |
+
+Also, there is no concept of instantiating multiple C modules of the same type. C modules basically function as packages in Java.  
+Java `class` is closer to C `struct`. C `struct` supports Association, Aggregation and Composition. However, C `struct` does not support encapsulation of data and behavior in the Java sense. We can only approximate by adding field of function pointer to a `struct`. Then we can simulate the Dependency and Inheritance relationship.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Forward declaration of the Person struct
+struct Person;
+
+// Function pointer type for printing a Person object
+typedef void (*PrintFunc)(const struct Person*);
+
+// Define a structure to represent a Person object
+typedef struct Person {
+    char name[50];
+    int age;
+    PrintFunc print;
+} Person;
+
+// Function to create a new Person object
+Person* createPerson(const char* name, int age) {
+    Person* person = (Person*)malloc(sizeof(Person));
+    if (person == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    strncpy(person->name, name, sizeof(person->name));
+    person->age = age;
+    person->print = printPerson; // Assigning the print function pointer
+    return person;
+}
+
+// Function to destroy a Person object
+void destroyPerson(Person* person) {
+    if (person != NULL) {
+        free(person);
+    }
+}
+
+// Function to print information about a Person object
+void printPerson(const Person* person) {
+    if (person != NULL) {
+        printf("Name: %s\n", person->name);
+        printf("Age: %d\n", person->age);
+    }
+}
+
+int main() {
+    // Create a new Person object
+    Person* person1 = createPerson("John Doe", 30);
+
+    // Call the print function via the function pointer
+    person1->print(person1);
+
+    // Destroy the Person object
+    destroyPerson(person1);
+
+    return 0;
+}
+```
+
 ### Implementation/process/deployment decomposition
 
 #### An application can be seperated into multiple processes
@@ -383,6 +458,7 @@ public class Student {
 <img src="Software_Decomposition/Decomposition - Client-Server.webp" width="600">
 
 ### Other types of separation
+
 #### Code can be separated into multiple repositories
 
 Processes in multi-process architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
@@ -391,7 +467,7 @@ Processes in multi-process architecture tend to be distributed services. And dis
 
 <img src="Software_Decomposition/Decomposition - Car.png" width="600">
 
-Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together. Decomposition is the design equivalent of distributed computation in many ways.
+Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together.
 
 By dividing a complex problem into smaller parts, you can reduce the cognitive load, focus on one aspect at a time, and avoid getting lost in irrelevant details or assumptions. Breaking down complex problems also helps you to communicate more effectively with others, as you can explain your problem and your solution in a clear and logical way, and invite feedback and collaboration.
 
