@@ -1,6 +1,6 @@
 # What are the potential benefits of decomposition?
 
-<img src="./images/Decomposition%20-%20Car.png" width="600">
+<img src="./images/Decomposition - Car.png" width="600">
 
 Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together.
 
@@ -22,36 +22,9 @@ A function can be re-used at many places.
 
 ## Test isolation
 
-## Benefits of multi-repo
 
-### Versioning decoupling
 
-One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
-
-### Independent library versioning
-
-When tagging a repository, its whole codebase is assigned the “new” tag. Since only the code for a specific library is on the repository, the library can be tagged and versioned independently of all other libraries hosted elsewhere.
-Having an independent version for every library helps define the dependency tree for the application, allowing us to configure what version of each library to use.
-
-### Independent service releases
-
-Since the repository only contains the code for some service and nothing else, it can have its own deployment cycle, independently of any progress made on the applications accessing it.
-
-The service can use a fast release cycle such as continuous delivery (where new code is deployed after it passes all the tests). Some libraries accessing the service may use a slower release cycle, such as those that only produce a new release once a week.
-
-### Helps define access control across the organization
-
-Only the team members involved with developing a library need to be added to the corresponding repository and download its code. As a result, there’s an implicit access control strategy for each layer in the application. Those involved with the library will be granted editing rights, and everyone else may get no access to the repository. Or they may be given reading but not editing rights.
-
-### Allows teams to work autonomously
-
-Team members can design the library’s architecture and implement its code working in isolation from all other teams. They can make decisions based on what the library does in the general context without being affected by the specific requirements from some external team or application.
-
-### Less load on IDE when only one repo needs to be worked on
-
-Less load on IDE when only one repo needs to be worked on.
-
-## Benefits of multi-process (multi)
+## Benefits of multiprocess/distributed services
 
 ### Parallelism
 
@@ -61,10 +34,63 @@ Another advantage of separate processes is that they can provide a security barr
 
 A final difference is that using separate processes is the first step toward allowing you to offload the work onto a completely separate computer (client/server style). So if you're using a program flexible enough that it allows you to spread its work across several computers in a network, it'll probably use processes instead of threads.
 
-## Faster build and startup
+### Faster build and startup
 
-Edit-build-run-test loop takes less time, which improves productivity.
+And each service typically starts a lot faster than a large monolith does, which also makes developers more productive and speeds up deployments.
 
-## Benefits of decomposing into distributed services
+### Geographical
 
 Part of the application can reside in different machines, different rooms, different buildings, different parts of the world.
+
+### Independent deployment
+Each service can be deployed independently of other services. If the developers responsible for a service need to deploy a change that’s local to that service, they don’t need to coordinate with other developers. They can deploy their changes. As a result, it’s much easier to deploy changes frequently into production.
+You can structure the engineering organization as a collection of small (for example, two-pizza) teams. Each team is solely responsible for the development and deployment of one or more related services. Each team can develop, deploy, and scale their services independently of all the other teams. As a result, the development velocity is much higher.
+
+<img src="./images/Decomposition - Microservice - Teams.png" width="600">
+
+The ability to do continuous delivery and deployment has several business benefits:
++ It reduces the time to market, which enables the business to rapidly react to feedback from customers.
++ It enables the business to provide the kind of reliable service today’s customers have come to expect.
+
+### Services are independently scalable
+Each service in a microservice architecture can be scaled independently of other services using X-axis cloning and Z-axis partitioning. Moreover, each service can be deployed on hardware that’s best suited to its resource requirements. This is quite different than when using a monolithic architecture, where components with wildly different resource requirements—for example, CPU-intensive vs. memory-intensive—must be deployed together.
+
+### Better fault isolation
+The microservice architecture has better fault isolation. For example, a memory leak in one service only affects that service. Other services will continue to handle requests normally. In comparison, one misbehaving component of a monolithic architecture will bring down the entire system.
+
+### Easily experiment with and adopt new technologies
+Last but not least, the microservice architecture eliminates any long-term commitment to a technology stack. In principle, when developing a new service, the developers are free to pick whatever language and frameworks are best suited for that service. In many organizations, it makes sense to restrict the choices, but the key point is that you aren’t constrained by past decisions.
+
+Moreover, because the services are small, rewriting them using better languages and technologies becomes practical. If the trial of a new technology fails, you can throw away that work without risking the entire project. This is quite different than when using a monolithic architecture, where your initial technology choices severely constrain your ability to use different languages and frameworks in the future.
+
+### Outsourcing flexibility
+It may be necessary for a business to outsource certain functions to third-party partners. Many companies are concerned about protecting intellectual property with a monolithic architecture format. However, a microservices architecture allows businesses to segment areas just for partners that won’t otherwise disclose core services.
+
+### Benefits of multi-repo
+
+#### Versioning decoupling
+
+One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+
+#### Independent library versioning
+
+When tagging a repository, its whole codebase is assigned the “new” tag. Since only the code for a specific library is on the repository, the library can be tagged and versioned independently of all other libraries hosted elsewhere.
+Having an independent version for every library helps define the dependency tree for the application, allowing us to configure what version of each library to use.
+
+#### Independent service releases
+
+Since the repository only contains the code for some service and nothing else, it can have its own deployment cycle, independently of any progress made on the applications accessing it.
+
+The service can use a fast release cycle such as continuous delivery (where new code is deployed after it passes all the tests). Some libraries accessing the service may use a slower release cycle, such as those that only produce a new release once a week.
+
+#### Helps define access control across the organization
+
+Only the team members involved with developing a library need to be added to the corresponding repository and download its code. As a result, there’s an implicit access control strategy for each layer in the application. Those involved with the library will be granted editing rights, and everyone else may get no access to the repository. Or they may be given reading but not editing rights.
+
+#### Allows teams to work autonomously
+
+Team members can design the library’s architecture and implement its code working in isolation from all other teams. They can make decisions based on what the library does in the general context without being affected by the specific requirements from some external team or application.
+
+#### Less load on IDE when only one repo needs to be worked on
+
+Less load on IDE when only one repo needs to be worked on.
