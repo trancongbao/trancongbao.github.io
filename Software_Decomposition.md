@@ -37,7 +37,8 @@ The design quality of an application can basically be determined from the design
 
 More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
 The 4+1 model defines four different views of a software architecture. Each describes a particular aspect of the architecture and consists of a particular set of software elements and relationships between them.
-<img src="./images/Decomposition - Architecture.png" width="600">
+
+<img src="Software_Decomposition/Decomposition - Architecture.png" width="600">
 
 The purpose of each view is as follows:
 
@@ -356,23 +357,23 @@ public class Student {
 
 #### Data and logic can be decomposed into packages
 
-<img src="./images/Decomposition%20-%20Packages%20-%20C.jpg" width="600">
+<img src="Software_Decomposition/Decomposition - Packages - C.jpg" width="600">
 
-<img src="./images/Decomposition%20-%20Packages%20-%20JS.jpg" width="600">
+<img src="Software_Decomposition/Decomposition - Packages - JS.jpg" width="600">
 
-<img src="./images/Decomposition%20-%20Packages%20-%20Java.png" width="400">
+<img src="Software_Decomposition/Decomposition - Packages - Java.png" width="400">
 
 #### Packages can be decomposed into modules
 
-<img src="./images/Decomposition%20-%20Modules%20-%20Go.png" width="600">
+<img src="Software_Decomposition/Decomposition - Modules - Go.png" width="600">
 
 #### Persistent data can be divided into sql tables/no-sql documents
 
-<img src="./images/Decomposition%20-%20Databases.webp" width="600">
+<img src="Software_Decomposition/Decomposition - Databases.webp" width="600">
 
 #### Sql tables/no-sql documents can be separated into different databases
 
-<img src="./images/Decomposition%20-%20Databases.png" width="600">
+<img src="Software_Decomposition/Decomposition - Databases.png" width="600">
 
 #### Differences between decomposing data+logic into C modules vs. Java objects
 
@@ -453,17 +454,17 @@ int main() {
 
 #### An application can be seperated into multiple processes
 
-<img src="./images/Decomposition%20-%20IPC.png" width="600">
+<img src="Software_Decomposition/Decomposition - IPC.png" width="600">
 
 #### An application's processes can be separated into multiple distributed services
 
-<img src="./images/Decomposition%20-%20Virtualization.webp" width="600">
-<img src="./images/Decomposition%20-%20Containers.png" width="600">
+<img src="Software_Decomposition/Decomposition - Virtualization.webp" width="600">
+<img src="Software_Decomposition/Decomposition - Containers.png" width="600">
 
 #### An application's distributed services can be separated into different machines
 
-<img src="./images/Decomposition%20-%20Distributed%20System.png" width="600">
-<img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
+<img src="Software_Decomposition/Decomposition - Distributed System.png" width="600">
+<img src="Software_Decomposition/Decomposition - Client-Server.webp" width="600">
 
 ### Other types of separation
 
@@ -473,7 +474,7 @@ Processes in multiprocess architecture tend to be distributed services. And dist
 
 ## What are the potential benefits of decomposition?
 
-<img src="./images/Decomposition%20-%20Car.png" width="600">
+<img src="Software_Decomposition/Decomposition - Car.png" width="600">
 
 Decomposition addresses the challenge of understanding and managing complexity. It involves breaking down a complex problem or system into smaller, more manageable parts. Good decomposition allows us to solve each independently. In this way, the overall problem is solved or system is constructed by solving or designing each part and then combining them together.
 
@@ -544,7 +545,7 @@ Part of the application can reside in different machines, different rooms, diffe
 
 ## What are the potential costs of decomposition
 
-<img src="./images/Decomposition%20-%20Coupling.png" width="600">
+<img src="Software_Decomposition/Decomposition - Coupling.png" width="600">
 
 ### Coupling
 
@@ -591,7 +592,7 @@ Good decomposition means the net benefit is positive (opportunity cost).
 
 ### Coupling
 
-<img src="./images/Decomposition%20-%20Coupling%20&%20Cohesion.png" width="600">
+<img src="Software_Decomposition/Decomposition - Coupling & Cohesion.png" width="600">
 
 - Code coupling (high): one module uses the code of another module, for instance a branch. This violates information hiding – a basic software design concept.
 - Global data coupling: several modules have access to the same global data. But it can lead to uncontrolled error propagation and unforeseen side effects when changes are made.
