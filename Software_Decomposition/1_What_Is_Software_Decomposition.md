@@ -6,7 +6,7 @@
 
 > Object-oriented decomposition, on the other hand, breaks a large system down into progressively smaller classes or objects that are responsible for some part of the problem domain. (Wikipedia)
 
-### Architecture & the 4+1 architecture view model
+## Architecture & the 4+1 architecture view model
 
 There are numerous definitions of software architecture. For example, see https://en.wikiquote.org/wiki/Software_architecture to read some of them. My favorite definition comes from Len Bass and colleagues at the Software Engineering Institute (www.sei.cmu.edu), who played a key role in establishing software architecture as a discipline. They define software architecture as follows:
 
@@ -29,7 +29,7 @@ The design quality of an application can basically be determined from the design
 - The quality of decomposition is determined by two factors: cohesion and coupling.
 - The quality of each parts the degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
 
-#### The 4+1 view model of software architecture
+### The 4+1 view model of software architecture
 
 More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
 The 4+1 model defines four different views of a software architecture. Each describes a particular aspect of the architecture and consists of a particular set of software elements and relationships between them.
@@ -44,11 +44,11 @@ The purpose of each view is as follows:
 
 In addition to these four views, there are the **scenarios**—the +1 in the 4+1 model—that animate views. Each scenario describes how the various architectural components within a particular view collaborate in order to handle a request. A scenario in the logical view, for example, shows how the classes collaborate. Similarly, a scenario in the process view shows how the processes collaborate.
 
-### Logical decomposition
+## Logical decomposition
 
 A program can be thought of, logically, as containing data (states) and logic.
 
-##### Logic can be decomposed into blocks
+#### Logic can be decomposed into blocks
 
 ```C
 // C Blocks
@@ -107,7 +107,7 @@ fmt.Println(v)
 fmt.Println(v)
 ```
 
-#### Logic can be decomposed into functions
+### Logic can be decomposed into functions
 
 ```C
 #include <stdio.h>
@@ -173,7 +173,7 @@ int main() {
 }
 ```
 
-#### Data can be decomposed into data structures: array, map, struct, table, composite
+### Data can be decomposed into data structures: array, map, struct, table, composite
 
 ```C
 // C array
@@ -274,7 +274,7 @@ public function main() {
 }
 ```
 
-#### Data and logic can be decomposed into object (OOP)
+### Data and logic can be decomposed into object (OOP)
 
 ```java
 // Java class
@@ -350,7 +350,7 @@ public class Student {
 }
 ```
 
-#### Data and logic can be decomposed into packages
+### Data and logic can be decomposed into packages
 
 <img src="./images/Decomposition%20-%20Packages%20-%20C.jpg" width="600">
 
@@ -358,19 +358,19 @@ public class Student {
 
 <img src="./images/Decomposition%20-%20Packages%20-%20Java.png" width="400">
 
-#### Packages can be decomposed into modules
+### Packages can be decomposed into modules
 
 <img src="./images/Decomposition%20-%20Modules%20-%20Go.png" width="600">
 
-#### Persistent data can be divided into sql tables/no-sql documents
+### Persistent data can be divided into sql tables/no-sql documents
 
 <img src="./images/Decomposition%20-%20Databases.webp" width="600">
 
-#### Sql tables/no-sql documents can be separated into different databases
+### Sql tables/no-sql documents can be separated into different databases
 
 <img src="./images/Decomposition%20-%20Databases.png" width="600">
 
-#### Differences between decomposing data+logic into C modules vs. Java objects
+### Differences between decomposing data+logic into C modules vs. Java objects
 
 Even though data+logic can be decomposed into different parts using either modules in C or objects in Java, there is a critical difference: relationship between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
 
@@ -445,24 +445,24 @@ int main() {
 }
 ```
 
-### Implementation/process/deployment decomposition
+## Implementation/process/deployment decomposition
 
-#### An application can be seperated into multiple processes
+### An application can be seperated into multiple processes
 
 <img src="./images/Decomposition%20-%20IPC.png" width="600">
 
-#### An application's processes can be separated into multiple distributed services
+### An application's processes can be separated into multiple distributed services
 
 <img src="./images/Decomposition%20-%20Virtualization.webp" width="600">
 <img src="./images/Decomposition%20-%20Containers.png" width="600">
 
-#### An application's distributed services can be separated into different machines
+### An application's distributed services can be separated into different machines
 
 <img src="./images/Decomposition%20-%20Distributed%20System.png" width="600">
 <img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
 
-### Other types of separation
+## Other types of separation
 
-#### Code can be separated into multiple repositories
+### Code can be separated into multiple repositories
 
 Processes in multiprocess architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.
