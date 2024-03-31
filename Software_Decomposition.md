@@ -25,6 +25,14 @@ Decomposition is important for a couple of reasons:
 
 It’s the decomposition into parts and the relationships between those parts that determine the application’s -ilities.
 
+> In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In terms of data, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In terms of persistent data storage, the is a spectrum from row -> table -> database -> database server.  
+> In terms of design quality, there is a spectrum from code quality -> design quality -> architecture quality.
+
+The design quality of an application can basically be determined from the design quality of each top-level parts and the degree of coupling between these top-level parts. The top-level
+
+- The quality of decomposition is determined by two factors: cohesion and coupling.
+- The quality of each parts the degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
+
 #### The 4+1 view model of software architecture
 
 More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
@@ -539,8 +547,14 @@ Part of the application can reside in different machines, different rooms, diffe
 <img src="Software_Decomposition/Decomposition - Coupling.png" width="600">
 
 ### Coupling
-The different parts of an application cannot work alone. They still need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**. And the degree of coupling in the system is one of the primary indicators of the quality of the design/decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
-Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And the degree of 
+
+The different parts of an application cannot work alone. They still need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**.
+Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design is.
+
+#### Distance between parts
+
+Logic: same block -> same function -> same package ->
+Data: same struct/table --> different struct/table
 
 ### Indirection
 
