@@ -21,10 +21,61 @@ Decomposition is important for a couple of reasons:
 
 It’s the decomposition into parts and the relationships between those parts that determine the application’s -ilities.
 
-> In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In terms of data, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In terms of persistent data storage, the is a spectrum from row -> table -> database -> database server.  
+> In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In hierarchical data model, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In relational data model, the is a spectrum from row -> table -> database -> database server.
+
+```mermaid
+flowchart TD
+    subgraph Application[Applicaion]
+        subgraph 1 [Service 1]
+            subgraph 1.1 [Module 1.1]
+                subgraph 1.1.1 [Function]
+                    1.1.1.1[Code Block]
+                    1.1.1.2[Code Block]
+                end
+                subgraph 1.1.2 [Function]
+                    1.1.2.1[Code Block]
+                    1.1.2.2[Code Block]
+                end
+            end
+            subgraph 1.2 [Module 1.2]
+                subgraph 1.2.1 [Function]
+                    1.2.1.1[Code Block]
+                    1.2.1.2[Code Block]
+                end
+                subgraph 1.2.2 [Function]
+                    1.2.2.1[Code Block]
+                    1.2.2.2[Code Block]
+                end
+            end
+        end
+        subgraph 2 [Service 2]
+            subgraph 2.1 [Module 2.1]
+                subgraph 2.1.1 [Function]
+                    2.1.1.1[Code Block]
+                    2.1.1.2[Code Block]
+                end
+                subgraph 2.1.2 [Function]
+                    2.1.2.1[Code Block]
+                    2.1.2.2[Code Block]
+                end
+            end
+            subgraph 2.2 [Module 2.2]
+                subgraph 2.2.1 [Function]
+                    2.2.1.1[Code Block]
+                    2.2.1.2[Code Block]
+                end
+                subgraph 2.2.2 [Function]
+                    2.2.2.1[Code Block]
+                    2.2.2.2[Code Block]
+                end
+            end
+        end
+    end
+```
+
 > In terms of design quality, there is a spectrum from code quality -> design quality -> architecture quality.
 
-The design quality of an application can basically be determined from the design quality of each top-level parts and the degree of coupling between these top-level parts. The top-level
+The design quality of an application can basically be determined from the design quality of each top-level parts and the degree of coupling between these top-level parts.
 
 - The quality of decomposition is determined by two factors: cohesion and coupling.
 - The quality of each parts the degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).

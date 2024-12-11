@@ -12,7 +12,7 @@ By dividing a complex problem into smaller parts, you can reduce the cognitive l
 
 It should be possible to make drastic changes to one module without a need to change others: faster and less risky.
 
-## Coordination/Communication
+## Easier Coordination/Communication
 
 Separate groups would work on each module with little need for communication.
 
@@ -20,9 +20,7 @@ Separate groups would work on each module with little need for communication.
 
 A function can be re-used at many places.
 
-## Test isolation
-
-
+## Test Isolation
 
 ## Benefits of multiprocess/distributed services
 
