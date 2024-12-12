@@ -84,7 +84,7 @@ The problem couplings introduce can become more severe when we have decompositio
 
 Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
 
-## Decomposition introduces abstraction
+## Decomposition introduces bad or premature abstraction
 
 This can be both a benefit and a liability.
 The abstract can be bad (OOP), premature.
