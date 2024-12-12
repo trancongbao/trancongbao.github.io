@@ -122,4 +122,4 @@ One supposed benefit of microservice architecture is that teams can operate inde
 
 If some team member eventually needs to work in a different team, they may suffer a bit of culture shock and learn a new way of doing their job.
 
-![alt text](image-1.png)
+<img src="./images/Granularity of Decomposition.png" width="600">
