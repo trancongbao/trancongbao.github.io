@@ -2,7 +2,7 @@
 
 ## Coupling
 
-The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the problems. This "connection" is called **coupling**. For example, one part of the application uses the result from another part. This basically makes working with one part dependent on the other parts.
+The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the problems. For example, one part of the application uses the result from another part. This "connection" is called **coupling**. This basically makes working with one part dependent on the other parts.
 
 Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
 
@@ -11,17 +11,9 @@ Couplings exist, whether the application is decomposed or not, or how granular t
 
 ### Data coupling
 
-This is probably the most severe coupling.
+This is probably the most severe coupling. Modules share data through, for example, parameters or global data.
 
-- Modules share data through, for example, parameters.
-
-#### Global data coupling
-
-Several modules have access to the same global data.
-
-#### Stamp coupling
-
-**Stamp coupling** occurs when modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record.
+Sometimes, modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record. There's even a term for this: **Stamp coupling**.
 
 ### Communication protocol coupling
 
