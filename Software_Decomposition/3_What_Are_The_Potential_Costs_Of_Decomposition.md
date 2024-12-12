@@ -57,13 +57,14 @@ Services can use synchronous request/response-based communication mechanisms, su
 Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
 
 ## Couplings reduce the benefit from decomposition
-
+There more couplings, the less benefit we can get from decomposition.
 - Cognitive load is not reduced as much, as we need to take into account dependent modules.
 - Changes in one part are more likely to necessitate changes in other parts.
 - Members/teams must communicate more closely if their modules.
 - More difficult to isolate test.
 
-Moreover, the problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
+## Coupling with decomposition introduce indirection
+The problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
 
 - We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
 - In event-drivent architecture, asynchronous messaging communication, the communication is not direct and asynchronous.
