@@ -46,9 +46,9 @@ The client need to authenticate with server according to mechamsim the server us
 - _Resource coupling_. A bug in one module—for example, a memory leak—crashes all instances of the application, one by one. Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
 - _Technology coupling_. The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
 
-#### Synchronous vs. asynchronous
+#### Availability coupling (synchronous vs. asynchronous communicaton)
 
-There is an important dimention when we talk about coupling: (a)synchronity. Services can use synchronous request/response-based communication mechanisms, such as HTTPbased REST or gRPC. Alternatively, they can use asynchronous, message-based communication mechanisms such as AMQP or STOMP.
+Services can use synchronous request/response-based communication mechanisms, such as HTTPbased REST or gRPC. Alternatively, they can use asynchronous, message-based communication mechanisms such as AMQP or STOMP.
 
 - _Synchronous_. The client expects a timely response from the service and might
   even block while it waits.
