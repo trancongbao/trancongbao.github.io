@@ -11,7 +11,7 @@ Couplings exist, whether the application is decomposed or not, or how granular t
 - More difficult to isolate test.  
 
 Moreover, the higher the decomposition level, the worse the problem couplings will introduce.
-- We now have indirection. We have to get to another function, module, file, even repository to understand what we are dealing with. Or we need to have good documentation. The problem can be lessened if the function/module/repo provide good abstraction that are easily to understand.
+- We now have indirection. We have to get to another function, module, file, even repository to understand what we are dealing with. Or we need to have good documentation. The problem can be lessened if the function/module/repo provide good abstraction that are easily to understand. That's why aiming for single-line functions is a bad idea.
 - Method calls, passing parameters
 - Http calls
 
