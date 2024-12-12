@@ -16,6 +16,10 @@ Dijkstra observed [Dij71, EWD303]:
 > We believe that the major contributor to this complexity in many systems is the handling of state and the burden that this adds when trying to analyse and reason about the system. (Out of the Tar Pit - Ben Moseley, Peter Marks)
 
 ## What is OOP?
+Ref: https://www.youtube.com/watch?v=vQPHtAxOZZw
+
+OOP is combination of data and behaviors (different from C struct), that you can have multiple instances of (different from C modules).
+
 ### Before OOP
 https://en.wikipedia.org/wiki/Programming_paradigm#History
 
