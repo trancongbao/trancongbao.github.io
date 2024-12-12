@@ -87,6 +87,7 @@ Sometimes, the net benefit can be negative: we're better off reducing the decomp
 ## Decomposition introduces abstraction
 
 This can be both a benefit and a liability.
+The abstract can be bad (OOP), premature.
 
 ## Costs of Multi-Repo
 
