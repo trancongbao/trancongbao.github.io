@@ -1,24 +1,23 @@
 # What are the potential costs of decomposition
 
-<img src="./images/Decomposition - Coupling.png" width="600">
-
 ## Coupling
 
-The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**. For example, one part of the application uses the result from another part.
+The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the problems. This "connection" is called **coupling**. For example, one part of the application uses the result from another part.
 
-Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, the more coupling we have, the less benefit we can get from the decomposition.
+Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
 - Cognitive load is not reduced as much, as we need to take into account dependent modules.
 - Changes in one part are more likely to necessitate changes in other parts.
 - Members/teams must communicate more closely if their modules.
 - More difficult to isolate test.  
 
-Moreover, the coupling can get worse if decomposition is introduced.
+Moreover, the coupling can get worse if decomposition is introduced. The higher the decomposition level, the worse the problem.
 - Method calls, passing parameters
 - Http calls
 
 Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
 
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
+<img src="./images/Decomposition - Coupling.png" width="600">
 
 ### Data coupling
 
