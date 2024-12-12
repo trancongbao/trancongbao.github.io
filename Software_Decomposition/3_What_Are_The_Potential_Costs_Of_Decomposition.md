@@ -19,7 +19,7 @@ This is probably the most severe coupling. Modules share data through, for examp
 
 Sometimes, modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record. There's even a term for this: **Stamp coupling**.
 
-### Control coupling
+#### Control coupling
 
 One part is executed depending on other parts.
 
@@ -55,10 +55,6 @@ Services can use synchronous request/response-based communication mechanisms, su
 - _Asynchronous_. The client doesn’t block, and the response, if any, isn’t necessarily sent immediately.
 
 Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
-
-### Code coupling (high)
-
-One module uses the code of another module, for instance a branch.
 
 ## Couplings reduce the benefit from decomposition
 
