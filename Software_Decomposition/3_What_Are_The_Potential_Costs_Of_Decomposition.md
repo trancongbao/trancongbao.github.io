@@ -6,22 +6,6 @@ The different parts of an application cannot work alone. They need to connect wi
 
 Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
 
-### Couplings reduce the benefit from decomposition.
-
-- Cognitive load is not reduced as much, as we need to take into account dependent modules.
-- Changes in one part are more likely to necessitate changes in other parts.
-- Members/teams must communicate more closely if their modules.
-- More difficult to isolate test.
-
-Moreover, the problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
-
-- We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
-- When the app is decomposed into distributed services, instead of a method call, we need to use a network calls.
-
-Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
-
-Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
-
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
 <img src="./images/Decomposition - Coupling.png" width="600">
 
@@ -83,6 +67,20 @@ One service needs to another service to be available.
 ### Code coupling (high)
 
 One module uses the code of another module, for instance a branch.
+
+## Couplings reduce the benefit from decomposition
+
+- Cognitive load is not reduced as much, as we need to take into account dependent modules.
+- Changes in one part are more likely to necessitate changes in other parts.
+- Members/teams must communicate more closely if their modules.
+- More difficult to isolate test.
+
+Moreover, the problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
+
+- We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
+- When the app is decomposed into distributed services, instead of a method call, we need to use a network calls.
+
+Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
 
 ## Indirection
 
