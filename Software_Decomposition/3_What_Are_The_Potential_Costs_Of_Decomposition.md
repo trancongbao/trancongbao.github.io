@@ -64,12 +64,13 @@ There more couplings, the less benefit we can get from decomposition.
 - More difficult to isolate test.
 
 ## Coupling with decomposition introduce indirection
-The problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
 
 We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
 
 In event-drivent architecture, asynchronous messaging communication, the communication is not direct and asynchronous.
 
+## Decoupling make problems from coupling more severe
+The problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
 - When the app is decomposed into distributed services, instead of a method call, we need to use a network calls. Network failure (or configuration error) is a reality. The probability of having one part of your software unreachable is infinitely bigger now.
 - Transaction management become much more difficult in distributed enironment.
 - Another issue with using the microservice architecture is that developers must deal with the additional complexity of creating a distributed system. Services must use an interprocess communication mechanism. This is more complex than a simple method call. Moreover, a service must be designed to handle partial failure and deal with the remote service either being unavailable or exhibiting high latency.
