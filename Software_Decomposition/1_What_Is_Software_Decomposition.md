@@ -511,9 +511,3 @@ int main() {
 
 <img src="./images/Decomposition%20-%20Distributed%20System.png" width="600">
 <img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
-
-## Other types of separation
-
-### Code can be separated into multiple repositories
-
-Processes in multiprocess architecture tend to be distributed services. And distributed-services architecture almost always comes hand-in-hand with multi-databases architecture and multi-repo versioning strategy. This is often called microservice architecture.

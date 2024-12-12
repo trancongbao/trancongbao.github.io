@@ -63,32 +63,3 @@ Moreover, because the services are small, rewriting them using better languages 
 
 ### Outsourcing flexibility
 It may be necessary for a business to outsource certain functions to third-party partners. Many companies are concerned about protecting intellectual property with a monolithic architecture format. However, a microservices architecture allows businesses to segment areas just for partners that won’t otherwise disclose core services.
-
-### Benefits of multi-repo
-
-#### Versioning decoupling
-
-One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
-
-#### Independent library versioning
-
-When tagging a repository, its whole codebase is assigned the “new” tag. Since only the code for a specific library is on the repository, the library can be tagged and versioned independently of all other libraries hosted elsewhere.
-Having an independent version for every library helps define the dependency tree for the application, allowing us to configure what version of each library to use.
-
-#### Independent service releases
-
-Since the repository only contains the code for some service and nothing else, it can have its own deployment cycle, independently of any progress made on the applications accessing it.
-
-The service can use a fast release cycle such as continuous delivery (where new code is deployed after it passes all the tests). Some libraries accessing the service may use a slower release cycle, such as those that only produce a new release once a week.
-
-#### Helps define access control across the organization
-
-Only the team members involved with developing a library need to be added to the corresponding repository and download its code. As a result, there’s an implicit access control strategy for each layer in the application. Those involved with the library will be granted editing rights, and everyone else may get no access to the repository. Or they may be given reading but not editing rights.
-
-#### Allows teams to work autonomously
-
-Team members can design the library’s architecture and implement its code working in isolation from all other teams. They can make decisions based on what the library does in the general context without being affected by the specific requirements from some external team or application.
-
-#### Less load on IDE when only one repo needs to be worked on
-
-Less load on IDE when only one repo needs to be worked on.
