@@ -105,6 +105,9 @@ Teams will need to constantly catch up to use the latest releases from other tea
 
 Consequently, a team not able to catch up may end up sticking to the outdated version of the depended-upon library. This outcome will have implications on the application (in terms of security, speed, and other considerations), and the gap in development across libraries may only get wider.
 
+## Fragment technology stacks
+One supposed benefit of microservice architecture is that projects can use different tech stakc. However, this could create a hiring and management nightmare. In fact, may microservice architecture opt to use a standard tech stack.
+
 ## Fragment teams
 
 One supposed benefit of microservice architecture is that teams can operate indeepently. However, when different teams don’t need to interact, they may work in their own silos. In the long term, this could result in teams producing their subcultures within the company, such as employing different methodologies of programming or management or utilizing different sets of development tools.
