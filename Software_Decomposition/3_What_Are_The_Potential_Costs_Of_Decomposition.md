@@ -19,6 +19,9 @@ This is probably the most severe coupling. Modules share data through, for examp
 
 Sometimes, modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record. There's even a term for this: **Stamp coupling**.
 
+### Control coupling
+One part is executed depending on other parts.
+
 #### Subclass coupling (OOP)
 
 Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
@@ -44,7 +47,10 @@ The client need to authenticate with server according to mechamsim the server us
 
 ### Synchronous vs. asynchronous
 
-There is an important dimention when we talk about coupling: (a)synchronity.
+There is an important dimention when we talk about coupling: (a)synchronity. Services can use synchronous request/response-based communication mechanisms, such as HTTPbased REST or gRPC. Alternatively, they can use asynchronous, message-based communication mechanisms such as AMQP or STOMP.
+- *Synchronous*. The client expects a timely response from the service and might
+even block while it waits.
+- *Asynchronous*. The client doesn’t block, and the response, if any, isn’t necessarily sent immediately.
 In synchronous communication, the receiver must be their to receive the messsage and process the message. Otherwise, communicate can not be carried out.
 
 Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
