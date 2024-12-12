@@ -4,25 +4,44 @@
 
 ## Coupling
 
-The different parts of an application cannot work alone. They still need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**.
+The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the original problems. This "connection" is called **coupling**. For example, one part of the application uses the result from another part.
+
+Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, the more coupling we have, the less benefit we can get from the decomposition.
+- Cognitive load is not reduced as much, as we need to take into account dependent modules.
+- Changes in one part are more likely to necessitate changes in other parts.
+- Members/teams must communicate more closely if their modules.
+- More difficult to isolate test.  
+
+Moreover, the coupling can get worse if decomposition is introduced.
+- Method calls, passing parameters
+- Http calls
+
 Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
 
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
 
 ### Data coupling
+
+This is probably the most severe coupling.
+- 
 Modules share data through, for example, parameters.
 
 #### Global data coupling
+
 Several modules have access to the same global data.
 
-### External coupling
-External coupling occurs when two modules share an externally imposed data format, communication protocol, or device interface.
+#### Stamp coupling
 
-### Data-structured coupling
-Stamp coupling occurs when modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record.
+**Stamp coupling** occurs when modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record.
+
+### Communication protocol coupling
+
+Two modules share an communication protocol.
 
 ### Coupling in OOP
+
 #### Subclass coupling
+
 Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
 
 ### Monolithic coupling
@@ -53,14 +72,17 @@ The monolithic architecture makes it difficult to adopt new frameworks and langu
 #### Database schema coupling
 
 ### Availability coupling
+
 One service needs to another service to be available.
 
-### Code coupling (high):
+### Code coupling (high)
+
 One module uses the code of another module, for instance a branch.
 
 ## Indirection
 
 ### Distributed systems are complex
+
 Another issue with using the microservice architecture is that developers must deal with the additional complexity of creating a distributed system. Services must use an interprocess communication mechanism. This is more complex than a simple method call. Moreover, a service must be designed to handle partial failure and deal with the remote service either being unavailable or exhibiting high latency.
 
 Implementing use cases that span multiple services requires the use of unfamiliar techniques. Each service has its own database, which makes it a challenge to implement transactions and queries that span services. As described in chapter 4, a microservices-based application must use what are known as sagas to maintain data consistency across services. Chapter 7 explains that a microservices-based application can’t retrieve data from multiple services using simple queries. Instead, it must implement queries using either API composition or CQRS views.
@@ -68,9 +90,10 @@ Implementing use cases that span multiple services requires the use of unfamilia
 IDEs and other development tools are focused on building monolithic applications and don’t provide explicit support for developing distributed applications. Writing automated tests that involve multiple services is challenging. These are all issues that are specific to the microservice architecture. Consequently, your organization’s developers must have sophisticated software development and delivery skills in order to successfully use microservices.
 
 The microservice architecture also introduces significant operational complexity. Many more moving parts—multiple instances of different types of service—must be managed in production. To successfully deploy microservices, you need a high level of automation. You must use technologies such as the following:
-+ Automated deployment tooling, like Netflix Spinnaker
-+ An off-the-shelf PaaS, like Pivotal Cloud Foundry or Red Hat OpenShift
-+ A Docker orchestration platform, like Docker Swarm or Kubernetes
+
+- Automated deployment tooling, like Netflix Spinnaker
+- An off-the-shelf PaaS, like Pivotal Cloud Foundry or Red Hat OpenShift
+- A Docker orchestration platform, like Docker Swarm or Kubernetes
 
 ## Abstraction
 
