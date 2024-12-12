@@ -6,7 +6,7 @@ The different parts of an application cannot work alone. They need to connect wi
 
 Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. The business requirements necessitate a certain of coupling.
 
-When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
+When it come to decomposition, the more coupling we have, the less benefit we can get from the decomposition.
 
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
 <img src="./images/Decomposition - Coupling.png" width="600">
