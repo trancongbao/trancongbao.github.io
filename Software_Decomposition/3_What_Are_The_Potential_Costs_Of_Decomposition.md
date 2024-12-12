@@ -30,16 +30,16 @@ Two modules share an communication protocol: REST vs. grpc.
 #### Authentication coupling
 
 
-#### Monolithic coupling
+#### Monolithic, monorepo coupling
 
-- Versioning coupling. One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
-- Dependency management coupling. Different modules use the same dependency file (e.g. `package.json`).
-- IDE coupling. Big code base can slow down the IDE, making developers less productive.
-- Build coupling
-- Startup coupling. Edit-build-run-test loop takes a long time, which badly impact productivity.
-- Resource coupling. A bug in one module—for example, a memory leak—crashes all instances of the application, one by one. Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
-- Technology stack coupling. The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
-- Database schema coupling
+- *Versioning coupling*. One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+- *Dependency management coupling*. Different modules use the same dependency file (e.g. `package.json`).
+- *IDE coupling*. Big code base can slow down the IDE, making developers less productive.
+- *Build coupling*
+- *Deployment coupling*
+- *Startup coupling*. Edit-build-run-test loop takes a long time, which badly impact productivity.
+- *Resource coupling*. A bug in one module—for example, a memory leak—crashes all instances of the application, one by one. Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
+- *Technology coupling*. The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
 
 ### Synchronous vs. asynchronous
 There is 
