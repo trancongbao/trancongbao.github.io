@@ -45,6 +45,9 @@ The client need to authenticate with server according to mechamsim the server us
 ### Synchronous vs. asynchronous
 
 There is an important dimention when we talk about coupling: (a)synchronity.
+In synchronous communication, the receiver must be their to receive the messsage and process the message. Otherwise, communicate can not be carried out.
+
+Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
 
 One service needs to another service to be available.
 
