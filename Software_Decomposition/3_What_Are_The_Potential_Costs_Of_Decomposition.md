@@ -5,17 +5,17 @@
 The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the problems. This "connection" is called **coupling**. For example, one part of the application uses the result from another part.
 
 Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
+
 - Cognitive load is not reduced as much, as we need to take into account dependent modules.
 - Changes in one part are more likely to necessitate changes in other parts.
 - Members/teams must communicate more closely if their modules.
-- More difficult to isolate test.  
+- More difficult to isolate test.
 
 Moreover, the higher the decomposition level, the worse the problem couplings will introduce.
-- We now have indirection. We have to get to another function, module, file, even repository to understand what we are dealing with. Or we need to have good documentation. The problem can be lessened if the function/module/repo provide good abstraction that are easily to understand. That's why aiming for single-line functions is a bad idea.
-- Method calls, passing parameters
-- Http calls
 
-Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
+- We now have indirection. Instead of having the processing inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
+- Http calls
+  Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
 
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
 <img src="./images/Decomposition - Coupling.png" width="600">
@@ -23,8 +23,8 @@ Even though there will always be some degree of coupling between parts, differen
 ### Data coupling
 
 This is probably the most severe coupling.
-- 
-Modules share data through, for example, parameters.
+
+- Modules share data through, for example, parameters.
 
 #### Global data coupling
 
