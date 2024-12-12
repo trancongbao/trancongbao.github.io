@@ -65,7 +65,7 @@ One module uses the code of another module, for instance a branch.
 Moreover, the problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
 
 - We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
-- When the app is decomposed into distributed services, instead of a method call, we need to use a network calls.
+- When the app is decomposed into distributed services, instead of a method call, we need to use a network calls. Network failure (or configuration error) is a reality. The probability of having one part of your software unreachable is infinitely bigger now.
 - Transaction management become much more difficult in distributed enironment.
 
 Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
