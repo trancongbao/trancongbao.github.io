@@ -8,7 +8,7 @@
 
 [3. What are the potential costs of decomposition?](./3_What_Are_The_Potential_Costs_Of_Decomposition.md)
 
-[4. Criteria of a good decomposition?](./4_Criteria_Of_A_Good_Decomposition)
+[4. How to decompose?](./4_How_To_Decompose.md)
 
 ## Reference
 
