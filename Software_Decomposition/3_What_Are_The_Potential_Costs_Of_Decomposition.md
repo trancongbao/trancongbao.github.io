@@ -57,7 +57,9 @@ Services can use synchronous request/response-based communication mechanisms, su
 Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
 
 ## Couplings reduce the benefit from decomposition
+
 There more couplings, the less benefit we can get from decomposition.
+
 - Cognitive load is not reduced as much, as we need to take into account dependent modules.
 - Changes in one part are more likely to necessitate changes in other parts.
 - Members/teams must communicate more closely if their modules.
@@ -70,7 +72,9 @@ We now have indirection. For example, instead of seeing the code inline, we have
 In event-drivent architecture, asynchronous messaging communication, the communication is not direct and asynchronous.
 
 ## Decoupling make problems from coupling more severe
+
 The problem couplings introduce can become more severe when we have decomposition. Also, the higher the decomposition level, the worse the problem couplings will introduce.
+
 - When the app is decomposed into distributed services, instead of a method call, we need to use a network calls. Network failure (or configuration error) is a reality. The probability of having one part of your software unreachable is infinitely bigger now.
 - Transaction management become much more difficult in distributed enironment.
 - Another issue with using the microservice architecture is that developers must deal with the additional complexity of creating a distributed system. Services must use an interprocess communication mechanism. This is more complex than a simple method call. Moreover, a service must be designed to handle partial failure and deal with the remote service either being unavailable or exhibiting high latency.
@@ -81,23 +85,24 @@ The problem couplings introduce can become more severe when we have decompositio
 Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
 
 ## Decomposition introduces abstraction
+
 This can be both a benefit and a liability.
 
-### Costs of Multi-Repo
+## Costs of Multi-Repo
 
-#### Higher barriers of entry
+### Higher barriers of entry
 
 When new staff members start working for a company, they need to download the code and install the required tools to begin working on their tasks. Suppose the project is scattered across many repositories, each having its installation instructions and tooling required. In that case, the initial setup will be complex, and more often than not, the documentation will not be complete, requiring these new team members to reach out to colleagues for help.
 
 A monorepo simplifies matters. Since there is a single location containing all code and documentation, you can streamline the initial setup.
 
-#### Painful application-wide refactorings
+### Painful application-wide refactorings
 
 When creating an application-wide refactoring of the code, multiple libraries will be affected. If you’re hosting them via multiple repositories, managing all the different pull requests to keep them synchronized with each other can prove to be a challenge.
 
 A monorepo makes it easy to perform all modifications to all code for all libraries and submit it under a single pull request.
 
-#### Libraries must constantly be re-synced
+### Libraries must constantly be re-synced
 
 When a new version of a library containing breaking changes is released, libraries depending on this library will need to be adapted to start using the latest version. If the release cycle of the library is faster than that of its dependent libraries, they could quickly become out of sync with each other.
 
@@ -106,7 +111,9 @@ Teams will need to constantly catch up to use the latest releases from other tea
 Consequently, a team not able to catch up may end up sticking to the outdated version of the depended-upon library. This outcome will have implications on the application (in terms of security, speed, and other considerations), and the gap in development across libraries may only get wider.
 
 ## Other considerations
+
 ### Fragment technology stacks
+
 One supposed benefit of microservice architecture is that projects can use different tech stakc. However, this could create a hiring and management nightmare. In fact, may microservice architecture opt to use a standard tech stack.
 
 ### Fragment teams
