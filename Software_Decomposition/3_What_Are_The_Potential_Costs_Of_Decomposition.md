@@ -4,55 +4,45 @@
 
 The different parts of an application cannot work alone. They need to connect with each other somehow in order to solve the problems. For example, one part of the application uses the result from another part. This "connection" is called **coupling**. This basically makes working with one part dependent on the other parts.
 
-Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
+Couplings exist, whether the application is decomposed or not, or how granular the decomposition is. The business requirements necessitate a certain of coupling.
+
+When the application is decomposed, however, the more coupling we have, the less benefit we can get from the decomposition.
 
 <img src="./images/Decomposition - Coupling & Cohesion.png" width="600">
 <img src="./images/Decomposition - Coupling.png" width="600">
 
-### Data coupling
+### Coupling Types
+
+#### Data coupling
 
 This is probably the most severe coupling. Modules share data through, for example, parameters or global data.
 
 Sometimes, modules share a composite data structure and use only parts of it, possibly different parts (e.g., passing a whole record to a function that needs only one field of it). In this situation, a modification in a field that a module does not need may lead to changing the way the module reads the record. There's even a term for this: **Stamp coupling**.
 
-### Communication protocol coupling
-
-Two modules share an communication protocol.
-
-### Coupling in OOP
-
-#### Subclass coupling
+#### Subclass coupling (OOP)
 
 Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
 
-### Monolithic coupling
+#### Communication protocol coupling
 
-#### Versioning coupling
+Two modules share an communication protocol: REST vs. grpc.
 
-One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+#### Authentication coupling
 
-#### IDE coupling
 
-Big code base can slow down the IDE, making developers less productive.
+#### Monolithic coupling
 
-#### Build coupling
+- Versioning coupling. One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
+- Dependency management coupling. Different modules use the same dependency file (e.g. `package.json`).
+- IDE coupling. Big code base can slow down the IDE, making developers less productive.
+- Build coupling
+- Startup coupling. Edit-build-run-test loop takes a long time, which badly impact productivity.
+- Resource coupling. A bug in one module—for example, a memory leak—crashes all instances of the application, one by one. Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
+- Technology stack coupling. The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
+- Database schema coupling
 
-#### Startup coupling
-
-Edit-build-run-test loop takes a long time, which badly impact productivity.
-
-#### Resource coupling
-
-A bug in one module—for example, a memory leak—crashes all instances of the application, one by one.
-Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
-
-#### Technology stack coupling
-
-The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
-
-#### Database schema coupling
-
-### Availability coupling
+### Synchronous vs. asynchronous
+There is 
 
 One service needs to another service to be available.
 
@@ -73,6 +63,7 @@ Moreover, the problem couplings introduce can become more severe when we have de
 - When the app is decomposed into distributed services, instead of a method call, we need to use a network calls.
 
 Sometimes, decompose introduces other types of coupling.
+
 - protocol
 
 Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
