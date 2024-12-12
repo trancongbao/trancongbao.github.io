@@ -12,6 +12,8 @@ Peristent data storage: row -> table -> database -> database server
 <img src="./images/Decomposition - Cohesion - Types.png" width="600">
 
 ## Intuitiveness
+Good abstraction: can infer the behavior from name.
+Name has business meaning.
 
 # Decomposition techniques
 
