@@ -74,24 +74,12 @@ Moreover, the problem couplings introduce can become more severe when we have de
 - In event-drivent architecture, asynchronous messaging communication, the communication is not direct and asynchronous.
 - When the app is decomposed into distributed services, instead of a method call, we need to use a network calls. Network failure (or configuration error) is a reality. The probability of having one part of your software unreachable is infinitely bigger now.
 - Transaction management become much more difficult in distributed enironment.
+- Another issue with using the microservice architecture is that developers must deal with the additional complexity of creating a distributed system. Services must use an interprocess communication mechanism. This is more complex than a simple method call. Moreover, a service must be designed to handle partial failure and deal with the remote service either being unavailable or exhibiting high latency.
+- Implementing use cases that span multiple services requires the use of unfamiliar techniques. Each service has its own database, which makes it a challenge to implement transactions and queries that span services.
+- IDEs and other development tools are focused on building monolithic applications and don’t provide explicit support for developing distributed applications. Writing automated tests that involve multiple services is challenging. These are all issues that are specific to the microservice architecture. Consequently, your organization’s developers must have sophisticated software development and delivery skills in order to successfully use microservices.
+- The microservice architecture also introduces significant operational complexity. Many more moving parts—multiple instances of different types of service—must be managed in production. To successfully deploy microservices, you need a high level of automation.
 
 Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
-
-## Indirection
-
-### Distributed systems are complex
-
-Another issue with using the microservice architecture is that developers must deal with the additional complexity of creating a distributed system. Services must use an interprocess communication mechanism. This is more complex than a simple method call. Moreover, a service must be designed to handle partial failure and deal with the remote service either being unavailable or exhibiting high latency.
-
-Implementing use cases that span multiple services requires the use of unfamiliar techniques. Each service has its own database, which makes it a challenge to implement transactions and queries that span services. As described in chapter 4, a microservices-based application must use what are known as sagas to maintain data consistency across services. Chapter 7 explains that a microservices-based application can’t retrieve data from multiple services using simple queries. Instead, it must implement queries using either API composition or CQRS views.
-
-IDEs and other development tools are focused on building monolithic applications and don’t provide explicit support for developing distributed applications. Writing automated tests that involve multiple services is challenging. These are all issues that are specific to the microservice architecture. Consequently, your organization’s developers must have sophisticated software development and delivery skills in order to successfully use microservices.
-
-The microservice architecture also introduces significant operational complexity. Many more moving parts—multiple instances of different types of service—must be managed in production. To successfully deploy microservices, you need a high level of automation. You must use technologies such as the following:
-
-- Automated deployment tooling, like Netflix Spinnaker
-- An off-the-shelf PaaS, like Pivotal Cloud Foundry or Red Hat OpenShift
-- A Docker orchestration platform, like Docker Swarm or Kubernetes
 
 ## Abstraction
 
