@@ -36,7 +36,9 @@ In addition to these four views, there are the **scenarios**—the +1 in the 4+1
 
 ## Logical decomposition
 
-A program can be thought of, logically, as containing data (states) and logic. > In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In hierarchical data model, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In relational data model, the is a spectrum from row -> table -> database -> database server.
+A program can be thought of, logically, as containing data (states) and logic.
+
+> In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In hierarchical data model, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In relational data model, the is a spectrum from row -> table -> database -> database server.
 
 ```mermaid
 flowchart TD
@@ -419,7 +421,11 @@ public class Student {
 
 ### Differences between decomposing data+logic into C modules vs. Java objects
 
-Even though data+logic can be decomposed into different parts using either modules in C or objects in Java, there is a critical difference: relationship between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
+Even though data+logic can be encapsulated using either modules in C or objects in Java, there are two critical differences.
+
+One critical difference is that multiple similar objects in Java can be instatiated from the same class (the blueprint specifying what fields and methods are included). C modules basically function as packages in Java. Java `class` is closer to C `struct`. C `struct` supports Association, Aggregation and Composition. However, C `struct` does not support encapsulation of data and behavior in the Java sense. We can only approximate by adding field of function pointer to a `struct`. Then we can simulate the Dependency and Inheritance relationship.
+
+The other crirical difference is relationship between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
 
 | Relationship | C   | Java |
 | ------------ | --- | ---- |
@@ -428,9 +434,6 @@ Even though data+logic can be decomposed into different parts using either modul
 | Aggregation  | no  | yes  |
 | Composition  | no  | yes  |
 | Inheritance  | no  | yes  |
-
-Also, there is no concept of instantiating multiple C modules of the same type. C modules basically function as packages in Java.  
-Java `class` is closer to C `struct`. C `struct` supports Association, Aggregation and Composition. However, C `struct` does not support encapsulation of data and behavior in the Java sense. We can only approximate by adding field of function pointer to a `struct`. Then we can simulate the Dependency and Inheritance relationship.
 
 ```c
 #include <stdio.h>
