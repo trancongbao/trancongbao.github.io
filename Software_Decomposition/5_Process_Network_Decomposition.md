@@ -122,3 +122,15 @@ Services can use synchronous request/response-based communication mechanisms, su
 - _Asynchronous_. The client doesn’t block, and the response, if any, isn’t necessarily sent immediately.
 
 Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
+
+## Other considerations
+
+### Fragment technology stacks
+
+One supposed benefit of microservice architecture is that projects can use different tech stakc. However, this could create a hiring and management nightmare. In fact, may microservice architecture opt to use a standard tech stack.
+
+### Fragment teams
+
+One supposed benefit of microservice architecture is that teams can operate indeepently. However, when different teams don’t need to interact, they may work in their own silos. In the long term, this could result in teams producing their subcultures within the company, such as employing different methodologies of programming or management or utilizing different sets of development tools.
+
+If some team member eventually needs to work in a different team, they may suffer a bit of culture shock and learn a new way of doing their job.

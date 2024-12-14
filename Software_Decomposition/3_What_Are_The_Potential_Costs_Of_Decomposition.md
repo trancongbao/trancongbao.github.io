@@ -60,19 +60,7 @@ Sometimes, the net benefit can be negative: we're better off reducing the decomp
 This can be both a benefit and a liability.
 The abstract can be bad (OOP), premature.
 
-## Other considerations
-
-### Fragment technology stacks
-
-One supposed benefit of microservice architecture is that projects can use different tech stakc. However, this could create a hiring and management nightmare. In fact, may microservice architecture opt to use a standard tech stack.
-
-### Fragment teams
-
-One supposed benefit of microservice architecture is that teams can operate indeepently. However, when different teams don’t need to interact, they may work in their own silos. In the long term, this could result in teams producing their subcultures within the company, such as employing different methodologies of programming or management or utilizing different sets of development tools.
-
-If some team member eventually needs to work in a different team, they may suffer a bit of culture shock and learn a new way of doing their job.
-
-### Granularity
+## Granularity
 
 <img src="./images/Granularity of Decomposition.png" width="600">
 
