@@ -6,10 +6,6 @@ Good decomposition means the net benefit is positive (opportunity cost). Even th
 
 ### Distance between parts
 
-Logic: block -> function -> class -> package -> service  
-Data: piece of primitive data -> struct/table/class -> package -> service  
-Peristent data storage: row -> table -> database -> database server
-
 <img src="./images/Decomposition - Cohesion - Types.png" width="600">
 
 ## Intuitiveness
