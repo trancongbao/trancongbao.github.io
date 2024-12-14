@@ -104,3 +104,7 @@ If some team member eventually needs to work in a different team, they may suffe
 ### Granularity
 
 <img src="./images/Granularity of Decomposition.png" width="600">
+
+## Reference
+
+- [Coupling (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>)

@@ -54,3 +54,7 @@ Consequently, a team not able to catch up may end up sticking to the outdated ve
 ## Merge conflict
 
 A good design with less coupling could reduce merge conflict.
+
+## Reference
+
+- [Monorepo vs Multi-Repo](https://kinsta.com/blog/monorepo-vs-multi-repo/)

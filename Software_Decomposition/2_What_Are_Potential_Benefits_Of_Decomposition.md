@@ -63,3 +63,8 @@ Moreover, because the services are small, rewriting them using better languages 
 
 ### Outsourcing flexibility
 It may be necessary for a business to outsource certain functions to third-party partners. Many companies are concerned about protecting intellectual property with a monolithic architecture format. However, a microservices architecture allows businesses to segment areas just for partners that won’t otherwise disclose core services.
+
+## Reference
+
+- [Decomposition (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Decomposition_(computer_science)>)
+- [Modular programming - Wikipedia](https://en.wikipedia.org/wiki/Modular_programming)
