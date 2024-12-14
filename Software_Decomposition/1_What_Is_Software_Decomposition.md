@@ -515,4 +515,4 @@ Apart from logical decomposition, application can be decomposed into multiple pr
 <img src="./images/Decomposition%20-%20Distributed%20System.png" width="600">
 <img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
 
-### Different databases can lives in different database server
+### Different databases can lives in different database servers
