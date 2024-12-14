@@ -22,6 +22,11 @@ A function can be re-used at many places.
 
 ## Test Isolation
 
+## Related terms
+
+- Divide and Conquer
+- Separation of Concerns
+
 ## Reference
 
 - [Decomposition (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Decomposition_(computer_science)>)
