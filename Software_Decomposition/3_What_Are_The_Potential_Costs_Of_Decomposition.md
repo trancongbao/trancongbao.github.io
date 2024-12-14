@@ -47,10 +47,6 @@ In event-drivent architecture, asynchronous messaging communication, the communi
 This can be both a benefit and a liability.
 The abstract can be bad (OOP), premature.
 
-## Granularity
-
-<img src="./images/Granularity of Decomposition.png" width="600">
-
 ## Reference
 
 - [Coupling (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>)

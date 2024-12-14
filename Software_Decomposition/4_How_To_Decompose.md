@@ -1,6 +1,8 @@
-# Criteria for good decomposition
-
 Good decomposition means the net benefit is positive (opportunity cost). Even though there will always be some degree of coupling between parts, different designs can introduce different degree of coupling. And higher the degree of coupling is, the worse the design.
+
+## Granularity
+
+<img src="./images/Granularity of Decomposition.png" width="600">
 
 ## Cohesion
 
