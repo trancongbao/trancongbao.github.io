@@ -13,48 +13,24 @@ An application can be thought of, logically, as containing data (states) and log
 ```mermaid
 flowchart TD
     subgraph Application[Applicaion]
-        subgraph 1 [Service 1]
-            subgraph 1.1 [Module 1.1]
-                subgraph 1.1.1 [Function]
-                    1.1.1.1[Code Block]
-                    1.1.1.2[Code Block]
-                end
-                subgraph 1.1.2 [Function]
-                    1.1.2.1[Code Block]
-                    1.1.2.2[Code Block]
-                end
+        subgraph 1.1 [Module 1.1]
+            subgraph 1.1.1 [Function]
+                1.1.1.1[Code Block]
+                1.1.1.2[Code Block]
             end
-            subgraph 1.2 [Module 1.2]
-                subgraph 1.2.1 [Function]
-                    1.2.1.1[Code Block]
-                    1.2.1.2[Code Block]
-                end
-                subgraph 1.2.2 [Function]
-                    1.2.2.1[Code Block]
-                    1.2.2.2[Code Block]
-                end
+            subgraph 1.1.2 [Function]
+                1.1.2.1[Code Block]
+                1.1.2.2[Code Block]
             end
         end
-        subgraph 2 [Service 2]
-            subgraph 2.1 [Module 2.1]
-                subgraph 2.1.1 [Function]
-                    2.1.1.1[Code Block]
-                    2.1.1.2[Code Block]
-                end
-                subgraph 2.1.2 [Function]
-                    2.1.2.1[Code Block]
-                    2.1.2.2[Code Block]
-                end
+        subgraph 1.2 [Module 1.2]
+            subgraph 1.2.1 [Function]
+                1.2.1.1[Code Block]
+                1.2.1.2[Code Block]
             end
-            subgraph 2.2 [Module 2.2]
-                subgraph 2.2.1 [Function]
-                    2.2.1.1[Code Block]
-                    2.2.1.2[Code Block]
-                end
-                subgraph 2.2.2 [Function]
-                    2.2.2.1[Code Block]
-                    2.2.2.2[Code Block]
-                end
+            subgraph 1.2.2 [Function]
+                1.2.2.1[Code Block]
+                1.2.2.2[Code Block]
             end
         end
     end
