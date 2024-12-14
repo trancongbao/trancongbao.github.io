@@ -19,7 +19,24 @@ Decomposition is important for a couple of reasons:
 
 It’s the decomposition into parts and the relationships between those parts that determine the application’s -ilities.
 
-> In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In hierarchical data model, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In relational data model, the is a spectrum from row -> table -> database -> database server.
+### The 4+1 view model of software architecture
+
+More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
+The 4+1 model defines four different views of a software architecture. Each describes a particular aspect of the architecture and consists of a particular set of software elements and relationships between them.
+<img src="./images/Decomposition - Architecture.png" width="600">
+
+The purpose of each view is as follows:
+
+- **Logical view**— The software elements that are created by developers. In object-oriented languages, these elements are classes and packages. The relations between them are the relationships between classes and packages, including inheritance, associations, and depends-on.
+- **Implementation view**— The output of the build system. This view consists of modules, which represent packaged code, and components, which are executable or deployable units consisting of one or more modules. In Java, a module is a JAR file, and a component is typically a WAR file or an executable JAR file. The relations between them include dependency relationships between modules and composition relationships between components and modules.
+- **Process view**— The components at runtime. Each element is a process, and the relations between processes represent interprocess communication.
+- **Deployment view**— How the processes are mapped to machines. The elements in this view consist of (physical or virtual) machines and the processes. The relations between machines represent networking. This view also describes the relationship between processes and machines.
+
+In addition to these four views, there are the **scenarios**—the +1 in the 4+1 model—that animate views. Each scenario describes how the various architectural components within a particular view collaborate in order to handle a request. A scenario in the logical view, for example, shows how the classes collaborate. Similarly, a scenario in the process view shows how the processes collaborate.
+
+## Logical decomposition
+
+A program can be thought of, logically, as containing data (states) and logic. > In terms of logic, there is a spectrum from code -> block -> function -> package -> service. In hierarchical data model, there is a spectrum from one piece of primitive data -> array/map/struct -> complex composite -> package -> service. In relational data model, the is a spectrum from row -> table -> database -> database server.
 
 ```mermaid
 flowchart TD
@@ -76,26 +93,7 @@ flowchart TD
 The design quality of an application can basically be determined from the design quality of each parts and the degree of coupling between these top-level parts.
 
 - The quality of decomposition is determined by two factors: cohesion and coupling.
-- The quality of each parts the degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
-
-### The 4+1 view model of software architecture
-
-More concretely, an application’s architecture can be viewed from multiple perspectives, in the same way that a building’s architecture can be viewed from structural, plumbing, electrical, and other perspectives. Phillip Krutchen wrote a classic paper describing the 4+1 view model of software architecture, “Architectural Blueprints—The ‘4+1’ View Model of Software Architecture” (www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf).
-The 4+1 model defines four different views of a software architecture. Each describes a particular aspect of the architecture and consists of a particular set of software elements and relationships between them.
-<img src="./images/Decomposition - Architecture.png" width="600">
-
-The purpose of each view is as follows:
-
-- **Logical view**— The software elements that are created by developers. In object-oriented languages, these elements are classes and packages. The relations between them are the relationships between classes and packages, including inheritance, associations, and depends-on.
-- **Implementation view**— The output of the build system. This view consists of modules, which represent packaged code, and components, which are executable or deployable units consisting of one or more modules. In Java, a module is a JAR file, and a component is typically a WAR file or an executable JAR file. The relations between them include dependency relationships between modules and composition relationships between components and modules.
-- **Process view**— The components at runtime. Each element is a process, and the relations between processes represent interprocess communication.
-- **Deployment view**— How the processes are mapped to machines. The elements in this view consist of (physical or virtual) machines and the processes. The relations between machines represent networking. This view also describes the relationship between processes and machines.
-
-In addition to these four views, there are the **scenarios**—the +1 in the 4+1 model—that animate views. Each scenario describes how the various architectural components within a particular view collaborate in order to handle a request. A scenario in the logical view, for example, shows how the classes collaborate. Similarly, a scenario in the process view shows how the processes collaborate.
-
-## Logical decomposition
-
-A program can be thought of, logically, as containing data (states) and logic.
+- The degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases).
 
 #### Logic can be decomposed into blocks
 
