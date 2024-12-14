@@ -423,9 +423,9 @@ public class Student {
 
 Even though data+logic can be encapsulated using either modules in C or objects in Java, there are two critical differences.
 
-One critical difference is that multiple similar objects in Java can be instatiated from the same class (the blueprint specifying what fields and methods are included). C modules basically function as packages in Java. Java `class` is closer to C `struct`. C `struct` supports Association, Aggregation and Composition. However, C `struct` does not support encapsulation of data and behavior in the Java sense. We can only approximate by adding field of function pointer to a `struct`. Then we can simulate the Dependency and Inheritance relationship.
+One critical difference is that multiple similar objects in Java can be _instatiated_ from the same class (the blueprint specifying what fields and methods are included). 
 
-The other crirical difference is relationship between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
+The other crirical difference is the relationships between the parts. Java provides built-in constructs to manage the following relationships between objects. C does not provides built-in constructs to manage the relationships between modules, except dependency in the form of `#inlcude`.
 
 | Relationship | C   | Java |
 | ------------ | --- | ---- |
@@ -434,6 +434,8 @@ The other crirical difference is relationship between the parts. Java provides b
 | Aggregation  | no  | yes  |
 | Composition  | no  | yes  |
 | Inheritance  | no  | yes  |
+
+C modules basically function as packages in Java. Java `class` is closer to C `struct`. C `struct` supports Association, Aggregation and Composition. However, C `struct` does not support encapsulation of data and behavior in the Java sense. We can only approximate by adding field of function pointer to a `struct`. Then we can simulate the Dependency and Inheritance relationship.
 
 ```c
 #include <stdio.h>
@@ -496,6 +498,8 @@ int main() {
 ```
 
 ## Implementation/process/deployment decomposition
+
+Apart from logical decomposition, application can be decomposed into multiple processes, and these multiple processes can live in different machines.
 
 ### An application can be seperated into multiple processes
 
