@@ -108,3 +108,4 @@ If some team member eventually needs to work in a different team, they may suffe
 ## Reference
 
 - [Coupling (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>)
+- [What Are Abstractions in Software Engineering with Examples](https://thevaluable.dev/abstraction-type-software-example/)

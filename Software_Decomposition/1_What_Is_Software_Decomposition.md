@@ -1,7 +1,5 @@
 # What is software decomposition
 
-
-
 > Structured analysis breaks down a software system from the system context level to system functions and data entities as described by Tom DeMarco. (Wikipedia)
 
 > Object-oriented decomposition, on the other hand, breaks a large system down into progressively smaller classes or objects that are responsible for some part of the problem domain. (Wikipedia)
@@ -75,7 +73,7 @@ flowchart TD
 
 > In terms of design quality, there is a spectrum from code quality -> design quality -> architecture quality.
 
-The design quality of an application can basically be determined from the design quality of each top-level parts and the degree of coupling between these top-level parts.
+The design quality of an application can basically be determined from the design quality of each parts and the degree of coupling between these top-level parts.
 
 - The quality of decomposition is determined by two factors: cohesion and coupling.
 - The quality of each parts the degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases, ).
