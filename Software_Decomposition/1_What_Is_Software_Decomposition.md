@@ -516,3 +516,4 @@ Apart from logical decomposition, application can be decomposed into multiple pr
 <img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
 
 ### Different databases can lives in different database servers
+Microservice architecture advocates for breaking one big monolith database into multiple databases in in different servers: each service has its own database (server).
