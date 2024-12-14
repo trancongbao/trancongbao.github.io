@@ -29,7 +29,7 @@ Describes the relationship between a child and its parent. The child is connecte
 
 ## Couplings reduce the benefit from decomposition
 
-There more couplings, the less benefit we can get from decomposition.
+There more couplings, the less benefit we can get from decomposition. Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity. There more couplings, the less benefit we can get from decomposition. 
 
 - Cognitive load is not reduced as much, as we need to take into account dependent modules.
 - Changes in one part are more likely to necessitate changes in other parts.
@@ -41,8 +41,6 @@ There more couplings, the less benefit we can get from decomposition.
 We now have indirection. For example, instead of seeing the code inline, we have to call a function and passing in the arguments. To understand what the function does, we need to rely on the function name which can be difficult to understand, misleading even: naming is not easy. So, sometimes, we need to read the documentation, which can also be difficult to understand or even misleading. So, sometimes, to be sure, we have to get to the function to read it. The function definition may locate in a different part of the module, or in a different module, different file, even a different repository.
 
 In event-drivent architecture, asynchronous messaging communication, the communication is not direct and asynchronous.
-
-Sometimes, the net benefit can be negative: we're better off reducing the decompotiion granularity.
 
 ## Decomposition introduces bad or premature abstraction
 
