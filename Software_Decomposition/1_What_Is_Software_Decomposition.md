@@ -97,7 +97,7 @@ The design quality of an application can basically be determined from the design
 - The quality of decomposition is determined by two factors: cohesion and coupling.
 - The degree of coupling in the system is one of the primary indicators of the quality of the decomposition. The other indicators include cohesion, and obviously the quality of the different parts (e.g. if you choose MongoDB as your no-sql databases).
 
-#### Logic can be decomposed into blocks
+### Logic can be decomposed into blocks
 
 ```C
 // C Blocks
@@ -514,3 +514,5 @@ Apart from logical decomposition, application can be decomposed into multiple pr
 
 <img src="./images/Decomposition%20-%20Distributed%20System.png" width="600">
 <img src="./images/Decomposition%20-%20Client-Server.webp" width="600">
+
+### Different databases can lives in different database server
