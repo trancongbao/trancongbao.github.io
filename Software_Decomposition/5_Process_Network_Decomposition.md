@@ -113,8 +113,6 @@ The client must use communication protocol the server provide, be it REST or grp
 
 The client need to authenticate with server according to mechamsim the server uses.
 
-
-
 #### Availability coupling (synchronous vs. asynchronous communicaton)
 
 Services can use synchronous request/response-based communication mechanisms, such as HTTPbased REST or gRPC. Alternatively, they can use asynchronous, message-based communication mechanisms such as AMQP or STOMP.
