@@ -27,35 +27,6 @@ One part is executed depending on other parts.
 
 Describes the relationship between a child and its parent. The child is connected to its parent, but the parent is not connected to the child.
 
-#### Communication protocol coupling
-
-The client must use communication protocol the server provide, be it REST or grpc.
-
-#### Authentication coupling
-
-The client need to authenticate with server according to mechamsim the server uses.
-
-#### Monolithic, monorepo coupling
-
-- _Versioning coupling_. One problem with so many developers committing to the same code base is that the build is frequently in an unreleasable state. Trying to solve this problem by using feature branches can result in lengthy, painful merges. Consequently, once a team completes its sprint, a long period of testing and code stabilization follows.
-- _Dependency management coupling_. Different modules use the same dependency file (e.g. `package.json`).
-- _IDE coupling_. Big code base can slow down the IDE, making developers less productive.
-- _Build coupling_
-- _Deployment coupling_
-- _Startup coupling_. Edit-build-run-test loop takes a long time, which badly impact productivity.
-- _Resource coupling_. A bug in one module—for example, a memory leak—crashes all instances of the application, one by one. Different application modules have conflicting resource requirements. The restaurant data, for example, is stored in a large, in-memory database, which is ideally deployed on servers with lots of memory. In contrast, the image processing module is CPU intensive and best deployed on servers with lots of CPU. If these modules are part of the same application, FTGO must compromise on the server configuration.
-- _Technology coupling_. The monolithic architecture makes it difficult to adopt new frameworks and languages. It would be extremely expensive and risky to rewrite the entire monolithic application so that it would use a new and presumably better technology. Consequently, developers are stuck with the technology choices they made at the start of the project. Quite often, they must maintain an application written using an increasingly obsolete technology stack.
-
-#### Availability coupling (synchronous vs. asynchronous communicaton)
-
-Services can use synchronous request/response-based communication mechanisms, such as HTTPbased REST or gRPC. Alternatively, they can use asynchronous, message-based communication mechanisms such as AMQP or STOMP.
-
-- _Synchronous_. The client expects a timely response from the service and might
-  even block while it waits.
-- _Asynchronous_. The client doesn’t block, and the response, if any, isn’t necessarily sent immediately.
-
-Event-driven architectures have loose coupling within space, time and synchronization, providing a scalable infrastructure for information exchange and distributed workflows. However, event-architectures are tightly coupled, via event subscriptions and patterns, to the semantics of the underlying event schema and values.
-
 ## Couplings reduce the benefit from decomposition
 
 There more couplings, the less benefit we can get from decomposition.
