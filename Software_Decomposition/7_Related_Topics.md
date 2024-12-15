@@ -10,3 +10,7 @@
 - Prevent use by mistake (not common)
 - Better automatic generation of interfaces documentation
 - Better IDE suggestions
+
+## Reference
+
+- [Type Systems in Software Explained With Examples](https://thevaluable.dev/type-system-software-explained-example/)
