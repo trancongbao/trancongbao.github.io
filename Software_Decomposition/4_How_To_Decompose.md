@@ -23,12 +23,13 @@ Functional decomposition is a software design technique in which a complex syste
 
 Functional decomposition is commonly used in object-oriented programming and structured programming paradigms. In object-oriented programming, each module is implemented as a class that encapsulates a specific set of functionality. In structured programming, each module is implemented as a function or procedure that performs a specific task.
 
-
 ## Reference
 
 - [Decomposition (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Decomposition_(computer_science)>)
 - [Coupling (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>)
 - [Cohesion (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Cohesion_(computer_science)>)
+- [Cohesion and Coupling in Software with Examples](https://thevaluable.dev/cohesion-coupling-guide-examples/)
 - [Information hiding - Wikipedia](https://en.wikipedia.org/wiki/Information_hiding)
 - [Expression_problem - Wikipedia](https://en.wikipedia.org/wiki/Expression_problem)
 - [How to organize your code (Blog)](https://kislayverma.com/programming/how-to-organize-your-code)
+- [The Single Responsibility Principle Revisited](https://thevaluable.dev/single-responsibility-principle-revisited/)
