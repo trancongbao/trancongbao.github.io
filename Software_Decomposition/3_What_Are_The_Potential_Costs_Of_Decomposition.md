@@ -33,14 +33,15 @@ The point is obvious: In order to comprehend an aspect of the system that, on th
 ### Factors that influence coupling
 Four major aspects of computer systems can increase or decrease intermodular coupling. In order of estimated magnitude of their effect on coupling, these are
 - Type of connection between modules. So-called minimally connected systems have the lowest coupling, and normally connected systems have
-lower coupling than those with p~thological connections.
+lower coupling than those with pathological connections.
 - Complexity of the interface. This is approximately equal to the number of different items being passed (not the amount of data) - the more
 items, the higher the coupling.
 - Type of information flow along the connection. Data-coupled systems have lower coupling than control-coupled systems, which have lower
 coupling than hybrid-coupled systems.
 - Binding time of the connection. Connections bound to fixed referents at execution time result in lower coupling than binding that takes place at loading time, which results in lower coupling than binding that takes place at linkage-edit time, which in turn results in lower coupling than binding that takes place at compilation (or assembly) time - all of which result in still lower coupling than binding that takes place at coding time.
+
 Each of these is important and is discussed separately below.
-#### Type ofconnection between modules
+#### Type of connection between modules
 Recall that a connection in a program is a reference by one element to the name, address, or identifier of another element. An intermodular connection occurs when the referenced element is in a different module from the referencing element. Any such referenced element defines an interface, a portion of the module boundary across which data or control flow. The interface may be regarded as residing at the referenced element~ you may think of it as a socket into which the plug, represented by the connection from the referencing module, is inserted. Every interface in a module represents one more thing which is/must be known, understood, and properly connected by other modules in the system.
 
 Clearly, we want to minimize systems/module complexity in part by minimizing the number (and variety) of interfaces per module. We already know that each module must have at least one interface to be uniquely defined and to be tied into a system.
