@@ -53,3 +53,4 @@ The abstract can be bad (OOP), premature.
 - [What Are Abstractions in Software Engineering with Examples](https://thevaluable.dev/abstraction-type-software-example/)
 - [Global Variables and States: Why So Much Hate?](https://thevaluable.dev/global-variable-explained/)
 - [A Detailed Explanation of The KISS Principle in Software](https://thevaluable.dev/kiss-principle-explained/)
+- [The DRY Principle: Benefits and Costs with Examples](https://thevaluable.dev/dry-principle-cost-benefit-example/)
