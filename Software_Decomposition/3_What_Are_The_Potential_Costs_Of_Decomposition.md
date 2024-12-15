@@ -52,3 +52,4 @@ The abstract can be bad (OOP), premature.
 - [Coupling (computer science) - Wikipedia](<https://en.wikipedia.org/wiki/Coupling_(computer_programming)>)
 - [What Are Abstractions in Software Engineering with Examples](https://thevaluable.dev/abstraction-type-software-example/)
 - [Global Variables and States: Why So Much Hate?](https://thevaluable.dev/global-variable-explained/)
+- [A Detailed Explanation of The KISS Principle in Software](https://thevaluable.dev/kiss-principle-explained/)
